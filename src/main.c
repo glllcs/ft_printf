@@ -6,19 +6,20 @@
 /*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 08:27:27 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/21 09:25:26 by lambrozi         ###   ########.fr       */
+/*   Updated: 2020/05/23 09:16:09 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <libft.h>
+#include "../include/ft_printf.h"
 
 int	main(void)
 {
 	int	inteiro;
 	float	decimal;
 
-	printf("%d", ft_atoi("234"));
+	ft_printf("abacate");
+
 	printf("INT\n");
 	inteiro = 44;
 	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);

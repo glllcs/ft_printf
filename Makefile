@@ -6,76 +6,56 @@
 #    By: lambrozi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/20 13:44:53 by lambrozi          #+#    #+#              #
-#    Updated: 2020/05/21 09:38:13 by lambrozi         ###   ########.fr        #
+#    Updated: 2020/05/23 09:45:20 by lambrozi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	libftiprintf.a
-CC		=	gcc
-C_FLAGS		=	-Wall -Werror -Wextra
+NAME = libftprintf.a
 
-LIBFT_SRCS	=	ft_strlen.c \
-			ft_isalpha.c \
-			ft_isalnum.c \
-			ft_isdigit.c \
-			ft_isascii.c \
-			ft_toupper.c \
-			ft_isprint.c \
-			ft_tolower.c \
-			ft_strlcat.c \
-			ft_memset.c \
-			ft_bzero.c \
-			ft_memcpy.c \
-			ft_memccpy.c \
-			ft_memchr.c \
-			ft_memcmp.c \
-			ft_memmove.c \
-			ft_substr.c \
-			ft_strjoin.c \
-			ft_strchr.c \
-			ft_strrchr.c \
-			ft_strncmp.c \
-			ft_strlcpy.c \
-			ft_strnstr.c \
-			ft_calloc.c \
-			ft_strdup.c \
-			ft_isupper.c \
-			ft_islower.c \
-			ft_itoa.c \
-			ft_putchar_fd.c \
-			ft_putendl_fd.c \
-			ft_putnbr_fd.c \
-			ft_putstr_fd.c \
-			ft_strmapi.c \
-			ft_strtrim.c \
-			ft_atoi.c \
-			ft_split.c
+LIBFT = libft
 
-OBJS	=	$(SRCS:.c=.o)
+SDIR = src
 
-%.o: %.c
-	$(CC) $(C_FLAGS) -c $< -o $(<:.c=.o) 
+ODIR = objs
 
-$(NAME) : $(OBJS)
-	ar rc $@ $(OBJS)
-	ranlib $(NAME)
+IDIR = include
+
+SOURCES = ft_printf.c main.c
+
+SRC = $(addprefix $(SDIR)/,$(SOURCES))
+
+OBJS = $(addprefix $(ODIR)/,$(SOURCES:.c=.o))
+
+CC = gcc
+C_FLAGS = -Wall -Werror -Wextra -I $(IDIR)
 
 all: $(NAME)
 
-bonus: $(OBJS) $(B_OBJS)
-	ar rc $(NAME) $(OBJS) $(B_OBJS)
-	ranlib $(NAME)
+$(NAME) : $(OBJS)
+	make -C $(LIBFT)
+	cp libft/libft.a ./$@
+	ar rc $@ $^
+	ranlib $@
+
+%(ODIR)/%.o: $(SDIR)/%.c
+	mkdir -p $(ODIR)
+	$(CC) $(C_FLAGS) -g -o $@ -c $< 
+
+bonus: fclean all
 
 run:
 	./$(NAME)
 
 clean:
-	rm -f $(OBJS) $(B_OBJS)
+	rm -f $(OBJS)
+	rm -rf $(ODIR)
+	make clean -C $(LIBFT)
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C $(LIBFT)
 
 norm:
-	norminette $(SRCS) $(BONUS)
+	norminette $(SDIR)
 
 re: fclean all
