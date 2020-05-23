@@ -6,7 +6,7 @@
 #    By: lambrozi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/20 13:44:53 by lambrozi          #+#    #+#              #
-#    Updated: 2020/05/23 09:45:20 by lambrozi         ###   ########.fr        #
+#    Updated: 2020/05/23 13:31:05 by lambrozi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,24 +14,22 @@ NAME = libftprintf.a
 
 LIBFT = libft
 
-SDIR = src
+SDIR = ./src
+ODIR = ./obj
+IDIR = ./include
+TDIR = ./test
 
-ODIR = objs
+_SRC = ft_printf.c
+SRC = $(addprefix $(SDIR)/,$(_SRC))
 
-IDIR = include
-
-SOURCES = ft_printf.c main.c
-
-SRC = $(addprefix $(SDIR)/,$(SOURCES))
-
-OBJS = $(addprefix $(ODIR)/,$(SOURCES:.c=.o))
+OBJ = $(addprefix $(ODIR)/,$(_SRC:.c=.o))
 
 CC = gcc
 C_FLAGS = -Wall -Werror -Wextra -I $(IDIR)
 
 all: $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJ)
 	make -C $(LIBFT)
 	cp libft/libft.a ./$@
 	ar rc $@ $^
@@ -47,7 +45,7 @@ run:
 	./$(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 	rm -rf $(ODIR)
 	make clean -C $(LIBFT)
 
