@@ -6,38 +6,44 @@
 #    By: lambrozi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/20 13:44:53 by lambrozi          #+#    #+#              #
-#    Updated: 2020/05/23 13:31:05 by lambrozi         ###   ########.fr        #
+#    Updated: 2020/05/23 20:21:24 by lambrozi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME		= libftprintf.a
 
-LIBFT = libft
+IDIR		= ./include
+TDIR		= ./test
 
-SDIR = ./src
-ODIR = ./obj
-IDIR = ./include
-TDIR = ./test
+LIBFT_DIR	= ./libft
+LIBFT		= ${LIBFT_DIR}/libft.a
 
-_SRC = ft_printf.c
-SRC = $(addprefix $(SDIR)/,$(_SRC))
+SDIR		= ./src
+_SRC		= ft_printf.c
+SRC		= $(addprefix $(SDIR)/,$(_SRC))
 
-OBJ = $(addprefix $(ODIR)/,$(_SRC:.c=.o))
+ODIR		= ./obj
+OBJ		= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
-CC = gcc
-C_FLAGS = -Wall -Werror -Wextra -I $(IDIR)
+CC		= gcc
+C_FLAGS		=	-Wall -Werror -Wextra \
+			-I $(IDIR) \
+			-I $(LIBFT_DIR) \
+			-g
+			#-L $(LIBFT_DIR) \
+			#-lft
 
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	make -C $(LIBFT)
-	cp libft/libft.a ./$@
-	ar rc $@ $^
-	ranlib $@
+	ar rcs $@ $^
 
-%(ODIR)/%.o: $(SDIR)/%.c
+$(ODIR)/%.o: $(SDIR)/%.c $(LIBFT)
 	mkdir -p $(ODIR)
-	$(CC) $(C_FLAGS) -g -o $@ -c $< 
+	$(CC) $(C_FLAGS) -c $< -o $@
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 bonus: fclean all
 
@@ -47,13 +53,20 @@ run:
 clean:
 	rm -f $(OBJ)
 	rm -rf $(ODIR)
-	make clean -C $(LIBFT)
+	make -C $(LIBFT_DIR) clean 
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C $(LIBFT)
+	make -C $(LIBFT_DIR) fclean
 
 norm:
-	norminette $(SDIR)
+	~/.norminette/norminette.rb $(SDIR) $(IDIR)
+	make -C $(LIBFT_DIR) norm 
 
 re: fclean all
+
+bonus: $(NAME)
+
+test: all
+	make -C $(TDIR)
+
