@@ -1,0 +1,43 @@
+
+recebe string e parametros
+percorre string até encontrar %
+	%% imprime %
+	%c
+		%+c 		error
+		%-c 		left aligned
+		%0c			error
+		% c			error
+		%.c 		nothing happens
+		%.<num>c	error
+		%<num>c		width
+		%*c			width by parameter
+	%s
+		%+s 		error
+		%-s 		left aligned
+		%0s			error
+		% s			error
+		%.s 		0 caracteres printed
+		%.<num>s	maximum caracteres to print
+		%<num>s		width
+		%*s			width by parameter	
+	%p
+	%d
+	%i
+	%u
+	%x
+	%X
+-0.*
+
+%[flags][width][.prec][hlL]type
+
+flags
+	-: posicione o valor à esquerda
+	+: o valor precedido de + ou -
+	 : valor positivo precedido de caracter em branco
+	0: preenche o valor com zeros
+	#: preceder octais com 0, hex com 0x, mostrar ponto decimal
+
+width.prec
+	*: o próprio argumento da printf é a largura
+	.numero: numero minimo de digitos para int, n de casas decimais para e ou f, num max de dig significaitvos para g, numero max de caracteres para significativos para s 
+	.*: o proprio argumento da printf é o valor da precisão
