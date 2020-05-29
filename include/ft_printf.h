@@ -27,14 +27,14 @@
 # define FLAG_SPACE	7
 # define FLAG_HASH	11
 
-typedef struct s_output
+typedef struct s_general
 {
 	const char	*input;
 	char		*output;
 	va_list		argument;
 	int			size;
 	int			posit;
-}				t_output;
+}				t_general;
 
 typedef struct s_ident
 {

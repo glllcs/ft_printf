@@ -6,7 +6,7 @@
 /*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 08:27:27 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/23 19:57:53 by lambrozi         ###   ########.fr       */
+/*   Updated: 2020/05/25 08:09:09 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,40 @@ int	main(void)
 {
 	char	c;
 	int	i;
-	char	*p = "palavra";
-//	float	decimal;
+	//char	*p = "palavra";
+	float	f;
 
 	c = 'x';
-	i = 47;
-	ft_printf("elemento %c %c\n", c, i);
-	printf("elemento %c %c\n", c, i);
-	printf("\n");
-	ft_printf("aqui a string %c %c\n", p, i);
+	i = 42;
+	f = 43435.456;
+//	ft_printf("elemento %c %c\n", c, i);
+//	printf("elemento %c %c\n", c, i);
+//	printf("\n");
+//	ft_printf("aqui a string %c %c\n", p, i);
+	//printf("%0s\n", p);
+	//printf("\n.% s.\n", p);
+	//printf("%+s\n", p);
+	ft_printf("ft_printf:\n.%10.c.\n", c);
+	printf("printf:\n.%10.c.\n", c);
+	ft_printf("ft_printf:\n.%-10c.\n", c);
+	printf("printf:\n.%-10c.\n", c);
+	ft_printf("ft_printf:\n.%*c.\n", 10, c);
+	printf("printf:\n.%*c.\n", 10, c);
+//	printf(".%10.4c.\n", c);
+//	printf("\n");
+//	printf("%+010%");
+//	printf("\n");
+//	printf("%d %0d %-d %.2d\n", i, i ,i, i);
+//	printf(". %-10d .\n", i);
+//    printf(". %00010d .\n", i);
+//    printf(". %- 10d .\n", i);
+//    printf(". % -10d .\n", i);
+//    printf(". %-#10x .\n", i);  
+//    printf(". %#x .\n", i);
+//    printf(". %*d .\n", 10, i);
+//    printf(". %10.2f .\n", f);
+	//printf("%f %0f %-f %.20f %'f", f, f, f, f, f);
+
 	//printf("aqui a string %s %c\n", p, i);
 /*
 	printf("INT\n");
