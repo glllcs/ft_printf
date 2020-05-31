@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= run
+NAME		= a.out
+
+DEBG_DIR	= $(NAME).dSYM
 
 LIBFTPRINTF_DIR	= ..
 LIBFTPRINTF	= $(LIBFTPRINTF_DIR)/libftprintf.a
@@ -42,5 +44,6 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) -rf $(DEBG_DIR)
 
 re: fclean all

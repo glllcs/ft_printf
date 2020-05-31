@@ -17,7 +17,7 @@ int	main(void)
 {
 	char	c;
 	int	i;
-	//char	*p = "palavra";
+	char	*p = "palavra";
 	float	f;
 
 	c = 'x';
@@ -30,12 +30,61 @@ int	main(void)
 	//printf("%0s\n", p);
 	//printf("\n.% s.\n", p);
 	//printf("%+s\n", p);
-	ft_printf("ft_printf:\n.%10.c.\n", c);
-	printf("printf:\n.%10.c.\n", c);
-	ft_printf("ft_printf:\n.%-10c.\n", c);
-	printf("printf:\n.%-10c.\n", c);
-	ft_printf("ft_printf:\n.%*c.\n", 10, c);
-	printf("printf:\n.%*c.\n", 10, c);
+
+//	//charactere
+	printf("1printf:\t.%10.c.\n", c);
+	ft_printf("1ft_printf:\t.%10.c.\n", c);
+	printf("\n");
+	printf("2printf:\t.%-10c.\n", c);
+	ft_printf("2ft_printf:\t.%-10c.\n", c);
+	printf("\n");
+	printf("3printf:\t.%*c.\n", 10, c);
+	ft_printf("3ft_printf:\t.%*c.\n", 10, c);
+	printf("\n");
+	printf("4printf:\t.%c.\n", c);
+	ft_printf("4ft_printf:\t.%c.\n", c);
+	printf("\n");
+	printf("5printf:\t.%*c.\n", 0, c);
+	ft_printf("5ft_printf:\t.%*c.\n", 0, c);
+	printf("\n");
+
+	//string
+	printf("1printf:\t.%10.s.\n", p);
+	ft_printf("1ft_printf:\t.%10.s.\n", p);
+	printf("\n");
+	printf("2printf:\t.%-10s.\n", p);
+	ft_printf("2ft_printf:\t.%-10s.\n", p);
+	printf("\n");
+	printf("3printf:\t.%*s.\n", 10, p);
+	ft_printf("3ft_printf:\t.%*s.\n", 10, p);
+	printf("\n");
+	printf("4printf:\t.%*.*s.\n", 0, 10, p);
+	ft_printf("4ft_printf:\t.%*.*s.\n", 0, 10, p);
+	printf("\n");
+	printf("5printf:\t.%*.*s.\n", 10, 0, p);
+	ft_printf("5ft_printf:\t.%*.*s.\n", 10, 0, p);
+	printf("\n");
+	printf("6printf:\t.%*.*s.\n", 4, 10, p);
+	ft_printf("6ft_printf:\t.%*.*s.\n", 4, 10, p);
+	printf("\n");
+	printf("7printf:\t.%*.*s.\n", 10, 4, p);
+	ft_printf("7ft_printf:\t.%*.*s.\n", 10, 4, p);
+	printf("\n");
+	printf("8printf:\t.%*.*s.\n", 0, 4, p);
+	ft_printf("8ft_printf:\t.%*.*s.\n", 0, 4, p);
+	printf("\n");
+	printf("9printf:\t.%*.*s.\n", 2, 10, p);
+	ft_printf("9ft_printf:\t.%*.*s.\n", 2, 10, p);
+	printf("\n");
+	printf("10printf:\t.%*.*s.\n", 0, 0, p);
+	ft_printf("10ft_printf:\t.%*.*s.\n", 0, 0, p);
+	printf("\n");
+	printf("11printf:\t.%-*.*s.\n", 10, 4, p);
+	ft_printf("11ft_printf:\t.%-*.*s.\n", 10, 4, p);
+	printf("\n");
+	printf("12printf:\t.%s %c %s %-*.*s?.\n", "cade", 'o', "meu", 10, 4, "cachorrinho");
+	ft_printf("12ft_printf:\t.%s %c %s %-*.*s?.\n", "cade", 'o', "meu", 10, 4, "cachorrinho");
+
 //	printf(".%10.4c.\n", c);
 //	printf("\n");
 //	printf("%+010%");

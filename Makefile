@@ -19,7 +19,7 @@ LIBFT_DIR	= ./libft
 LIBFT		= ${LIBFT_DIR}/libft.a
 
 SDIR		= ./src
-_SRC		= ft_printf.c
+_SRC		= ft_printf.c ft_get_identifiers.c ft_print_charac.c
 SRC		= $(addprefix $(SDIR)/,$(_SRC))
 
 ODIR		= ./obj
@@ -58,6 +58,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C $(LIBFT_DIR) fclean
+	make -C $(TDIR) fclean
 
 norm:
 	~/.norminette/norminette.rb $(SDIR) $(IDIR)

@@ -27,7 +27,7 @@
 # define FLAG_SPACE	7
 # define FLAG_HASH	11
 
-typedef struct s_general
+typedef struct	s_general
 {
 	const char	*input;
 	char		*output;
@@ -36,7 +36,7 @@ typedef struct s_general
 	int			posit;
 }				t_general;
 
-typedef struct s_ident
+typedef struct	s_ident
 {
 	int		flags;
 	int		width;
@@ -44,8 +44,15 @@ typedef struct s_ident
 	char	conversion;
 	char	*argument;
 	int		error;
-}			t_ident;
+}				t_ident;
 
 int		ft_printf(const char *phrase, ...);
+void	ft_init_ident(t_ident *identifier);
+void	get_flags(t_general *gen, t_ident *ident);
+int		get_sizes(t_general *gen);
+void	get_limits(t_general *gen, t_ident *ident);
+void	get_conversion(t_general *gen, t_ident *ident);
+void	ft_printf_c(t_general *gen, t_ident ident);
+void	ft_printf_s(t_general *gen, t_ident ident);
 
 #endif
