@@ -62,3 +62,21 @@ void			ft_printf_s(t_general *gen, t_ident ident)
 		gen->size += ft_print_space(cont);
 	free(str);
 }
+
+void			ft_printf_p(t_general *gen, t_ident ident)
+{
+	size_t	p;
+	char	*nbr;
+	int		nbr_len;
+
+	p = va_arg(gen->argument, size_t);
+	nbr = ft_itoa_base_u(p, BASE_HEX);
+	gen->size += (nbr_len = ft_strlen(nbr) + 2);
+	if (ident.flags % FLAG_MINUS != 0 && ident.width - nbr_len > 0)
+		gen->size += ft_print_space(ident.width - nbr_len);
+	ft_putstr_fd("0x", 1);
+	ft_putstr_fd(nbr, 1);
+	if (ident.flags % FLAG_MINUS == 0 && ident.width - nbr_len > 0)
+		gen->size += ft_print_space(ident.width - nbr_len);
+	free(nbr);
+}

@@ -13,25 +13,10 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
-int	main(void)
+void	test_c(void)
 {
-	char	c;
-	int	i;
-	char	*p = "palavra";
-	float	f;
+	char	c = 'x';
 
-	c = 'x';
-	i = 42;
-	f = 43435.456;
-//	ft_printf("elemento %c %c\n", c, i);
-//	printf("elemento %c %c\n", c, i);
-//	printf("\n");
-//	ft_printf("aqui a string %c %c\n", p, i);
-	//printf("%0s\n", p);
-	//printf("\n.% s.\n", p);
-	//printf("%+s\n", p);
-
-//	//charactere
 	printf("1printf:\t.%10.c.\n", c);
 	ft_printf("1ft_printf:\t.%10.c.\n", c);
 	printf("\n");
@@ -47,8 +32,12 @@ int	main(void)
 	printf("5printf:\t.%*c.\n", 0, c);
 	ft_printf("5ft_printf:\t.%*c.\n", 0, c);
 	printf("\n");
+}
 
-	//string
+void	test_s(void)
+{
+	char	*p = "palavra";
+
 	printf("1printf:\t.%10.s.\n", p);
 	ft_printf("1ft_printf:\t.%10.s.\n", p);
 	printf("\n");
@@ -84,25 +73,37 @@ int	main(void)
 	printf("\n");
 	printf("12printf:\t.%s %c %s %-*.*s?.\n", "cade", 'o', "meu", 10, 4, "cachorrinho");
 	ft_printf("12ft_printf:\t.%s %c %s %-*.*s?.\n", "cade", 'o', "meu", 10, 4, "cachorrinho");
+}
 
-//	printf(".%10.4c.\n", c);
-//	printf("\n");
-//	printf("%+010%");
-//	printf("\n");
+void	test_p(void)
+{
+	char	*p = "palavra";
+
+//	printf("%s", ft_itoa_base_u(4294978743, BASE_HEX));
+	printf("1printf:\t.%.p.\n", p);
+	ft_printf("1ft_printf:\t.%.p.\n", p);
+	printf("\n");
+	printf("2printf:\t.%-15p.\n", p);
+	ft_printf("2ft_printf:\t.%-15p.\n", p);
+	printf("\n");
+	printf("3printf:\t.%15p.\n", p);
+	ft_printf("3ft_printf:\t.%15p.\n", p);
+	printf("\n");
+	printf("4printf:\t.%9p.\n", p);
+	ft_printf("4ft_printf:\t.%9p.\n", p);
+	printf("\n");
+}
+
+void	test_int(void)
+{
+	int inteiro;
+//	int i = 42;
+
 //	printf("%d %0d %-d %.2d\n", i, i ,i, i);
 //	printf(". %-10d .\n", i);
 //    printf(". %00010d .\n", i);
 //    printf(". %- 10d .\n", i);
 //    printf(". % -10d .\n", i);
-//    printf(". %-#10x .\n", i);  
-//    printf(". %#x .\n", i);
-//    printf(". %*d .\n", 10, i);
-//    printf(". %10.2f .\n", f);
-	//printf("%f %0f %-f %.20f %'f", f, f, f, f, f);
-
-	//printf("aqui a string %s %c\n", p, i);
-/*
-	printf("INT\n");
 	inteiro = 44;
 	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
 	inteiro = -44;
@@ -111,7 +112,12 @@ int	main(void)
 	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
 	inteiro = -490904;
 	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
-	printf("\nDOUBLE\n");
+}
+
+void	test_float(void)
+{
+	float decimal;
+
 	decimal = 44.65;
 	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%.f, %%.0f=%.0f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal, decimal);
 	decimal = -44.65;
@@ -119,6 +125,13 @@ int	main(void)
 	decimal = 490904.656565;
 	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal);
 	decimal = -490904.656565;
-	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal);*/
+	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal);
+}
+
+int	main(void)
+{
+//	test_c();
+//	test_s();
+	test_p();
 	return (0);
 }

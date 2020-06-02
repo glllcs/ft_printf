@@ -70,6 +70,8 @@ void	get_conversion(t_general *gen, t_ident *ident)
 			ft_printf_c(gen, *ident);
 		else if (ident->conversion == 's')
 			ft_printf_s(gen, *ident);
+		else if (ident->conversion == 'p')
+			ft_printf_p(gen, *ident);
 	}
 	else
 		ident->error = 1;

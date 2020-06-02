@@ -27,6 +27,8 @@
 # define FLAG_SPACE	7
 # define FLAG_HASH	11
 
+# define BASE_HEX	"0123456789abcdef"
+
 typedef struct	s_general
 {
 	const char	*input;
@@ -46,13 +48,14 @@ typedef struct	s_ident
 	int		error;
 }				t_ident;
 
-int		ft_printf(const char *phrase, ...);
-void	ft_init_ident(t_ident *identifier);
-void	get_flags(t_general *gen, t_ident *ident);
-int		get_sizes(t_general *gen);
-void	get_limits(t_general *gen, t_ident *ident);
-void	get_conversion(t_general *gen, t_ident *ident);
-void	ft_printf_c(t_general *gen, t_ident ident);
-void	ft_printf_s(t_general *gen, t_ident ident);
+int				ft_printf(const char *phrase, ...);
+void			ft_init_ident(t_ident *identifier);
+void			get_flags(t_general *gen, t_ident *ident);
+int				get_sizes(t_general *gen);
+void			get_limits(t_general *gen, t_ident *ident);
+void			get_conversion(t_general *gen, t_ident *ident);
+void			ft_printf_c(t_general *gen, t_ident ident);
+void			ft_printf_s(t_general *gen, t_ident ident);
+void			ft_printf_p(t_general *gen, t_ident ident);
 
 #endif

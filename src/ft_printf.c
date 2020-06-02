@@ -23,8 +23,8 @@ void	ft_init_ident(t_ident *identifier)
 }
 
 /*
- * Atributes the conversion, if it's in CONVERSION, to ident->conversion and increments i
- * If it isn't in CONVERSION, atributes 1 to ident->error
+** Atributes the conversion, if it's in CONVERSION, to ident->conversion
+** and increments i. If it isn't in CONVERSION, atributes 1 to ident->error
 */
 
 void	print_ident(t_ident ident)
@@ -66,7 +66,7 @@ void	ft_print_ident(t_general *gen, t_ident *ident)
 	//print_ident(*ident);
 }
 
-int	ft_printf(const char *input, ...)
+int		ft_printf(const char *input, ...)
 {
 	t_general	gen;
 	t_ident		ident;
@@ -88,12 +88,11 @@ int	ft_printf(const char *input, ...)
 		else
 		{
 			ft_print_ident(&gen, &ident);
-
 		}
 	}
 	va_end(gen.argument);
-	ft_putchar_fd('[',1);
+	ft_putchar_fd('[', 1);
 	ft_putstr_fd(ft_itoa(gen.size), 1);
-	ft_putchar_fd(']',1);
+	ft_putchar_fd(']', 1);
 	return (gen.size);
 }
