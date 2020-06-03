@@ -1,0 +1,6 @@
+pft_2019/
+42TESTERS-PRINTF/
+*.a/
+obj/
+test/printf-tester/
+.vscode/*

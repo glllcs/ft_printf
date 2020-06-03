@@ -21,6 +21,15 @@ percorre string até encontrar %
 		%<num>s		width
 		%*s			width by parameter	
 	%p
+		%+p 		UB	
+		%-p 		left aligned
+		%0p			UB
+		% p			UB
+		%.p 		nothing changes
+		%.<num>p	UB
+		%#p			UB
+		%<num>p		width
+		%*p			width by parameter	
 	%d
 	%i
 	%u

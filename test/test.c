@@ -73,6 +73,12 @@ void	test_s(void)
 	printf("\n");
 	printf("12printf:\t.%s %c %s %-*.*s?.\n", "cade", 'o', "meu", 10, 4, "cachorrinho");
 	ft_printf("12ft_printf:\t.%s %c %s %-*.*s?.\n", "cade", 'o', "meu", 10, 4, "cachorrinho");
+	printf("\n");
+	printf("13printf:\t.%s.\n", NULL);
+	//ft_printf("13ft_printf:\t.%s.\n", NULL);
+	printf("\n");
+	printf("14printf:\t.%10s.\n", NULL);
+	ft_printf("14ft_printf:\t.%10s.\n", NULL);
 }
 
 void	test_p(void)
@@ -91,6 +97,15 @@ void	test_p(void)
 	printf("\n");
 	printf("4printf:\t.%9p.\n", p);
 	ft_printf("4ft_printf:\t.%9p.\n", p);
+	printf("\n");
+	printf("5printf:\t.%p.\n", NULL);
+	ft_printf("5ft_printf:\t.%p.\n", NULL);
+	printf("\n");
+	printf("6printf:\t.%5.p.\n", NULL);
+	ft_printf("6ft_printf:\t.%5.p.\n", NULL);
+	printf("\n");
+	printf("7printf:\t.%2.p.\n", NULL);
+	ft_printf("7ft_printf:\t.%2.p.\n", NULL);
 	printf("\n");
 }
 

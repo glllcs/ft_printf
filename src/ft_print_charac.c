@@ -41,7 +41,8 @@ void			ft_printf_s(t_general *gen, t_ident ident)
 	int		str_len;
 	int		cont;
 
-	str = ft_strdup(va_arg(gen->argument, char *));
+	if (!(str = ft_strdup(va_arg(gen->argument, char *))))
+		str = ft_strdup("(null)");
 	if (ident.precision == 0 && ident.width == 0)
 	{
 		free(str);
@@ -71,6 +72,8 @@ void			ft_printf_p(t_general *gen, t_ident ident)
 
 	p = va_arg(gen->argument, size_t);
 	nbr = ft_itoa_base_u(p, BASE_HEX);
+	if (ident.precision == 0 && p == 0)
+		nbr[ident.precision] = '\0';
 	gen->size += (nbr_len = ft_strlen(nbr) + 2);
 	if (ident.flags % FLAG_MINUS != 0 && ident.width - nbr_len > 0)
 		gen->size += ft_print_space(ident.width - nbr_len);

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 void	get_flags(t_general *gen, t_ident *ident)
 {

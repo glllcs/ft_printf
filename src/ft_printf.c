@@ -91,8 +91,8 @@ int		ft_printf(const char *input, ...)
 		}
 	}
 	va_end(gen.argument);
-	ft_putchar_fd('[', 1);
-	ft_putstr_fd(ft_itoa(gen.size), 1);
-	ft_putchar_fd(']', 1);
+	//ft_putchar_fd('[', 1);
+	//ft_putstr_fd(ft_itoa(gen.size), 1);
+	//ft_putchar_fd(']', 1);
 	return (gen.size);
 }
