@@ -73,6 +73,10 @@ void	get_conversion(t_general *gen, t_ident *ident)
 			ft_printf_s(gen, *ident);
 		else if (ident->conversion == 'p')
 			ft_printf_p(gen, *ident);
+		else if (ident->conversion == '%')
+			ft_printf_pct(gen, *ident);
+		else if (ident->conversion == 'd')
+			ft_printf_d(gen, *ident);
 	}
 	else
 		ident->error = 1;

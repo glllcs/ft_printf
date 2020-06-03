@@ -19,7 +19,8 @@ LIBFT_DIR	= ./libft
 LIBFT		= ${LIBFT_DIR}/libft.a
 
 SDIR		= ./src
-_SRC		= ft_printf.c ft_get_identifiers.c ft_print_charac.c
+_SRC		=	ft_printf.c ft_get_identifiers.c ft_print_charac.c \
+				ft_print_space.c ft_print_nbr.c
 SRC		= $(addprefix $(SDIR)/,$(_SRC))
 
 ODIR		= ./obj

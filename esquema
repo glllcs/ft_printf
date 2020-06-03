@@ -1,7 +1,15 @@
 
 recebe string e parametros
 percorre string até encontrar %
-	%% imprime %
+	%%
+		%+% 		nothing happens (N.H.)
+		%-% 		left aligned
+		%0%			N.H.
+		% %			N.H.
+		%.% 		N.H
+		%.<num>%	N.H.
+		%<num>%		width
+		%*%			width by parameter
 	%c
 		%+c 		error
 		%-c 		left aligned
@@ -31,6 +39,14 @@ percorre string até encontrar %
 		%<num>p		width
 		%*p			width by parameter	
 	%d
+		%+d 		value with + or -	
+		%-d 		left aligned
+		%0d			filled with 0 at left
+		% d			value with ' ' or -
+		%.d 		N.H
+		%.<num>d	minimum digits (filled with 0 at left)
+		%<num>d		width
+		%*d			width by parameter
 	%i
 	%u
 	%x

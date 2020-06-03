@@ -12,27 +12,17 @@
 
 #include "ft_printf.h"
 
-static int		ft_print_space(int cont)
-{
-	int		i;
-
-	i = -1;
-	while (++i < cont)
-		ft_putchar_fd(' ', 1);
-	return (cont > 0) ? (cont) : (0);
-}
-
 void			ft_printf_c(t_general *gen, t_ident ident)
 {
 	int		c;
 
 	c = va_arg(gen->argument, int);
 	if (ident.flags % FLAG_MINUS != 0 && ident.width > 0)
-		gen->size += ft_print_space(ident.width - 1);
+		gen->size += ft_print_space((ident.width - 1), ident);
 	ft_putchar_fd(c, 1);
 	gen->size++;
 	if (ident.flags % FLAG_MINUS == 0 && ident.width > 0)
-		gen->size += ft_print_space(ident.width - 1);
+		gen->size += ft_print_space((ident.width - 1), ident);
 }
 
 void			ft_printf_s(t_general *gen, t_ident ident)
@@ -56,11 +46,11 @@ void			ft_printf_s(t_general *gen, t_ident ident)
 	}
 	cont = ident.width - str_len;
 	if (ident.flags % FLAG_MINUS != 0 && cont > 0)
-		gen->size += ft_print_space(cont);
+		gen->size += ft_print_space(cont, ident);
 	ft_putstr_fd(str, 1);
 	gen->size += str_len;
 	if (ident.flags % FLAG_MINUS == 0 && cont > 0)
-		gen->size += ft_print_space(cont);
+		gen->size += ft_print_space(cont, ident);
 	free(str);
 }
 
@@ -76,10 +66,20 @@ void			ft_printf_p(t_general *gen, t_ident ident)
 		nbr[ident.precision] = '\0';
 	gen->size += (nbr_len = ft_strlen(nbr) + 2);
 	if (ident.flags % FLAG_MINUS != 0 && ident.width - nbr_len > 0)
-		gen->size += ft_print_space(ident.width - nbr_len);
+		gen->size += ft_print_space(ident.width - nbr_len, ident);
 	ft_putstr_fd("0x", 1);
 	ft_putstr_fd(nbr, 1);
 	if (ident.flags % FLAG_MINUS == 0 && ident.width - nbr_len > 0)
-		gen->size += ft_print_space(ident.width - nbr_len);
+		gen->size += ft_print_space(ident.width - nbr_len, ident);
 	free(nbr);
+}
+
+void			ft_printf_pct(t_general *gen, t_ident ident)
+{
+	if (ident.flags % FLAG_MINUS != 0 && ident.width > 0)
+		gen->size += ft_print_space((ident.width - 1), ident);
+	ft_putchar_fd('%', 1);
+	gen->size++;
+	if (ident.flags % FLAG_MINUS == 0 && ident.width > 0)
+		gen->size += ft_print_space((ident.width - 1), ident);	
 }

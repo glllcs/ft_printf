@@ -54,8 +54,11 @@ void			get_flags(t_general *gen, t_ident *ident);
 int				get_sizes(t_general *gen);
 void			get_limits(t_general *gen, t_ident *ident);
 void			get_conversion(t_general *gen, t_ident *ident);
+int				ft_print_space(int cont, t_ident ident);
 void			ft_printf_c(t_general *gen, t_ident ident);
 void			ft_printf_s(t_general *gen, t_ident ident);
 void			ft_printf_p(t_general *gen, t_ident ident);
+void			ft_printf_d(t_general *gen, t_ident ident);
+void			ft_printf_pct(t_general *gen, t_ident ident);
 
 #endif
