@@ -44,6 +44,7 @@ typedef struct	s_ident
 	int		width;
 	int		precision;
 	char	conversion;
+	char	prefix;
 	char	*argument;
 	int		error;
 }				t_ident;

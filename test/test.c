@@ -139,15 +139,15 @@ void	test_pct(void)
 
 void	test_d(void)
 {
-	printf("1printf:\t.%+1d.\n", 0);
-	ft_printf("1ft_printf:\t.%+1d.\n", 0);
-	printf("\n");
-	printf("2printf:\t.%+4d.\n", 5);
-	ft_printf("2ft_printf:\t.%+4d.\n", 5);
-	printf("\n");
-	printf("3printf:\t.%05d.\n", 42);
-	ft_printf("3ft_printf:\t.%05d.\n", 42);
-	printf("\n");
+//	printf("1printf:\t.%+1d.\n", 0);
+//	ft_printf("1ft_printf:\t.%+1d.\n", 0);
+//	printf("\n");
+//	printf("2printf:\t.% 04d.\n", 5);
+//	ft_printf("2ft_printf:\t.% 04d.\n", 5);
+//	printf("\n");
+//	printf("3printf:\t.%05d.\n", 42);
+//	ft_printf("3ft_printf:\t.%05d.\n", 42);
+//	printf("\n");
 	printf("4printf:\t.%- 8d.\n", -42);
 	ft_printf("4ft_printf:\t.%- 8d.\n", -42);
 	printf("\n");

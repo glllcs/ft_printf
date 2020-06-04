@@ -30,6 +30,7 @@ void	ft_init_ident(t_ident *identifier)
 void	print_ident(t_ident ident)
 {
 	ft_putchar_fd('[', 1);
+	ft_putchar_fd('%', 1);
 	if (ident.flags % FLAG_HASH == 0)
 		ft_putchar_fd('#', 1);
 	if (ident.flags % FLAG_MINUS == 0)
