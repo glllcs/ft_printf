@@ -139,29 +139,44 @@ void	test_pct(void)
 
 void	test_d(void)
 {
-//	printf("1printf:\t.%+1d.\n", 0);
-//	ft_printf("1ft_printf:\t.%+1d.\n", 0);
-//	printf("\n");
-//	printf("2printf:\t.% 04d.\n", 5);
-//	ft_printf("2ft_printf:\t.% 04d.\n", 5);
-//	printf("\n");
-//	printf("3printf:\t.%05d.\n", 42);
-//	ft_printf("3ft_printf:\t.%05d.\n", 42);
-//	printf("\n");
+	printf("1printf:\t.%+1d.\n", 0);
+	ft_printf("1ft_printf:\t.%+1d.\n", 0);
+	printf("\n");
+	printf("2printf:\t.% 04d.\n", 5);
+	ft_printf("2ft_printf:\t.% 04d.\n", 5);
+	printf("\n");
+	printf("3printf:\t.%05d.\n", 42);
+	ft_printf("3ft_printf:\t.%05d.\n", 42);
+	printf("\n");
 	printf("4printf:\t.%- 8d.\n", -42);
 	ft_printf("4ft_printf:\t.%- 8d.\n", -42);
 	printf("\n");
 	printf("5printf:\t.%.d.\n", 42);
 	ft_printf("5ft_printf:\t.%.d.\n", 42);
 	printf("\n");
-	printf("6printf:\t.%2.5d.\n", 42);
-	ft_printf("6ft_printf:\t.%2.5d.\n", 42);
+	printf("6printf:\t.%2.5d.\n", -42);
+	ft_printf("6ft_printf:\t.%2.5d.\n", -42);
 	printf("\n");
 	printf("7printf:\t.%015d.\n", -42);
 	ft_printf("7ft_printf:\t.%015d.\n", -42);
 	printf("\n");
 	printf("8printf:\t.%015.7d.\n", 42);
 	ft_printf("8ft_printf:\t.%015.7d.\n", 42);
+	printf("\n");
+	printf("9printf:\t.%.d.\n", 0);
+	ft_printf("9ft_printf:\t.%.d.\n", 0);
+	printf("\n");
+	printf("10printf:\t.%2.d.\n", 0);
+	ft_printf("10ft_printf:\t.%2.d.\n", 0);
+	printf("\n");
+	printf("11printf:\t.%.2d.\n", 0);
+	ft_printf("11ft_printf:\t.%.2d.\n", 0);
+	printf("\n");
+	printf("12printf:\t.%08.3d.\n", 456);
+	ft_printf("12ft_printf:\t.%08.3d.\n", 456);
+	printf("\n");
+	printf("13printf:\t.%03d.\n", -456);
+	ft_printf("13ft_printf:\t.%03d.\n", -456);
 	printf("\n");
 }
 

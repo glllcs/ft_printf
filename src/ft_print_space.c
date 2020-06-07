@@ -18,7 +18,8 @@ int		ft_print_space(int cont, t_ident ident)
 	char	c;
 
 	i = -1;
-	if (ident.flags % FLAG_ZERO == 0 && ident.flags % FLAG_MINUS != 0)
+	if (ident.flags % FLAG_ZERO == 0 && ident.flags % FLAG_MINUS != 0 && \
+	ident.conversion != 'd')
 		c = '0';
 	else
 		c = ' ';

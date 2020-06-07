@@ -26,6 +26,22 @@ char	ft_nbr_signal(long long *n, t_ident ident)
 	return (0);
 }
 
+char		*ft_get_nbr_aux(char *i_nbr, int i_len, int new_len, char signal)
+{
+	char	*nbr;
+
+	nbr = (char *)ft_calloc(new_len + 1, sizeof(char));
+	ft_memset(nbr, '0', new_len + 1);
+	if (signal != 0)
+	{
+		nbr[0] = signal;
+		ft_strlcpy(&nbr[new_len - i_len + 1], i_nbr, i_len + 1);
+	}
+	else
+		ft_strlcpy(&nbr[new_len - i_len], i_nbr, i_len + 1);
+	return (nbr);
+}
+
 char		*ft_get_nbr(long long n, t_ident ident)
 {
 	char	signal;
@@ -36,43 +52,20 @@ char		*ft_get_nbr(long long n, t_ident ident)
 	signal = ft_nbr_signal(&n, ident);
 	temp = ft_itoa(n);
 	nbr_len = ft_strlen(temp);
-	if (ident.precision > nbr_len)
+	if (n == 0 && ident.precision == 0 && signal == 0)
+		nbr = NULL;
+	else if (ident.precision >= nbr_len)
+		nbr = ft_get_nbr_aux(temp, nbr_len, ident.precision, signal);
+	else if (ident.width > nbr_len && ident.flags % FLAG_ZERO == 0) 
 	{
-		nbr = (char *)ft_calloc(ident.precision + 2, sizeof(char));
-		ft_memset(nbr, '0', ident.precision + 2);
-		if (signal != 0)
-		{
-			nbr[0] = signal;
-			ft_strlcpy(&nbr[ident.precision - nbr_len + 1], temp, nbr_len + 1);
-		}
-		else
-			ft_strlcpy(&nbr[ident.precision - nbr_len], temp, nbr_len + 1);
-		free(temp);
-		return (nbr);
-	}
-	nbr_len += (signal != 0) ? 1 : 0;
-	if (ident.width > nbr_len)
-	{
-		nbr = (char *)ft_calloc(ident.width + 1, sizeof(char));
-		ft_memset(nbr, '0', ident.width + 1);
-		if (signal != 0)
-		{
-			nbr[0] = signal;
-			ft_strlcpy(&nbr[ident.width - nbr_len + 1], temp, nbr_len + 1);
-		}
-		else
-			ft_strlcpy(&nbr[ident.width - nbr_len], temp, nbr_len + 1);
-		free(temp);
-		return (nbr);
-	}
-	nbr = (char *)ft_calloc(nbr_len + 1, sizeof(char));
-	if (signal != 0)
-	{
-		nbr[0] = signal;
-		ft_strlcpy(&nbr[1], temp, nbr_len + 1);
+		nbr_len += (signal != 0) ? 1 : 0;
+		nbr = ft_get_nbr_aux(temp, nbr_len, ident.width, signal);
 	}
 	else
-		ft_strlcpy(nbr, temp, nbr_len + 1);
+	{
+		nbr_len += (signal != 0) ? 1 : 0;
+		nbr = ft_get_nbr_aux(temp, nbr_len, nbr_len, signal);
+	}
 	free(temp);
 	return (nbr);
 }

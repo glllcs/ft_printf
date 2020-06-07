@@ -64,7 +64,7 @@ void	ft_print_ident(t_general *gen, t_ident *ident)
 	get_flags(gen, ident);
 	get_limits(gen, ident);
 	get_conversion(gen, ident);
-	//print_ident(*ident);
+//	print_ident(*ident);
 }
 
 int		ft_printf(const char *input, ...)
