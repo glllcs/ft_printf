@@ -12,14 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_print_space(int cont, t_ident ident)
+int		ft_print_space(int cont, t_ident ident, bool zero)
 {
 	int		i;
 	char	c;
 
 	i = -1;
-	if (ident.flags % FLAG_ZERO == 0 && ident.flags % FLAG_MINUS != 0 && \
-	ident.conversion != 'd')
+	if (zero == 1 && ident.flags % F_MINUS != 0)
 		c = '0';
 	else
 		c = ' ';

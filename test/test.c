@@ -175,8 +175,14 @@ void	test_d(void)
 	printf("12printf:\t.%08.3d.\n", 456);
 	ft_printf("12ft_printf:\t.%08.3d.\n", 456);
 	printf("\n");
-	printf("13printf:\t.%03d.\n", -456);
-	ft_printf("13ft_printf:\t.%03d.\n", -456);
+	printf("13printf:\t.%08.2d.\n", 456);
+	ft_printf("13ft_printf:\t.%08.2d.\n", 456);
+	printf("\n");
+	printf("14printf:\t.%08.5d.\n", 456);
+	ft_printf("14ft_printf:\t.%08.5d.\n", 456);
+	printf("\n");
+	printf("15printf:\t.%03d.\n", -456);
+	ft_printf("15ft_printf:\t.%03d.\n", -456);
 	printf("\n");
 }
 

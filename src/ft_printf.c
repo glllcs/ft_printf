@@ -31,15 +31,15 @@ void	print_ident(t_ident ident)
 {
 	ft_putchar_fd('[', 1);
 	ft_putchar_fd('%', 1);
-	if (ident.flags % FLAG_HASH == 0)
+	if (ident.flags % F_HASH == 0)
 		ft_putchar_fd('#', 1);
-	if (ident.flags % FLAG_MINUS == 0)
+	if (ident.flags % F_MINUS == 0)
 		ft_putchar_fd('-', 1);
-	if (ident.flags % FLAG_PLUS == 0)
+	if (ident.flags % F_PLUS == 0)
 		ft_putchar_fd('+', 1);
-	if (ident.flags % FLAG_SPACE == 0)
+	if (ident.flags % F_SPACE == 0)
 		ft_putchar_fd(' ', 1);
-	if (ident.flags % FLAG_ZERO == 0)
+	if (ident.flags % F_ZERO == 0)
 		ft_putchar_fd('0', 1);
 	if (ident.width != -1)
 		ft_putstr_fd(ft_itoa(ident.width), 1);

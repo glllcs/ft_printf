@@ -19,15 +19,15 @@ void	get_flags(t_general *gen, t_ident *ident)
 	while (ft_strchr(FLAGS, gen->input[gen->posit]))
 	{
 		if (gen->input[gen->posit] == '-')
-			ident->flags *= FLAG_MINUS;
+			ident->flags *= F_MINUS;
 		else if (gen->input[gen->posit] == '+')
-			ident->flags *= FLAG_PLUS;
+			ident->flags *= F_PLUS;
 		else if (gen->input[gen->posit] == '0')
-			ident->flags *= FLAG_ZERO;
+			ident->flags *= F_ZERO;
 		else if (gen->input[gen->posit] == ' ')
-			ident->flags *= FLAG_SPACE;
+			ident->flags *= F_SPACE;
 		else if (gen->input[gen->posit] == '#')
-			ident->flags *= FLAG_HASH;
+			ident->flags *= F_HASH;
 		gen->posit++;
 	}
 }
@@ -75,7 +75,7 @@ void	get_conversion(t_general *gen, t_ident *ident)
 			ft_printf_p(gen, *ident);
 		else if (ident->conversion == '%')
 			ft_printf_pct(gen, *ident);
-		else if (ident->conversion == 'd')
+		else if (ident->conversion == 'd' || ident->conversion == 'i')
 			ft_printf_d(gen, *ident);
 	}
 	else

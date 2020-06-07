@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include "libft.h"
+# include <stdbool.h>
 # include <stdarg.h>
 
 # define CONVERSION	"cspdiuxX%"
@@ -21,11 +22,11 @@
 # define FLAGS		"-+0 #"
 # define DIGITS		"0123456789"
 
-# define FLAG_MINUS	2
-# define FLAG_PLUS	3
-# define FLAG_ZERO	5
-# define FLAG_SPACE	7
-# define FLAG_HASH	11
+# define F_MINUS	2
+# define F_PLUS		3
+# define F_ZERO		5
+# define F_SPACE	7
+# define F_HASH		11
 
 # define BASE_HEX	"0123456789abcdef"
 
@@ -55,7 +56,7 @@ void			get_flags(t_general *gen, t_ident *ident);
 int				get_sizes(t_general *gen);
 void			get_limits(t_general *gen, t_ident *ident);
 void			get_conversion(t_general *gen, t_ident *ident);
-int				ft_print_space(int cont, t_ident ident);
+int				ft_print_space(int cont, t_ident ident, bool zero);
 void			ft_printf_c(t_general *gen, t_ident ident);
 void			ft_printf_s(t_general *gen, t_ident ident);
 void			ft_printf_p(t_general *gen, t_ident ident);
