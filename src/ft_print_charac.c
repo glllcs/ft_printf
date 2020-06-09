@@ -15,71 +15,52 @@
 void			ft_printf_c(t_general *gen, t_ident ident)
 {
 	int		c;
+	char	pre[2];
 
 	c = va_arg(gen->argument, int);
-	if (ident.flags % F_MINUS != 0 && ident.width > 0)
-		gen->size += ft_print_space((ident.width - 1), ident, ident.flags % F_ZERO == 0);
-	ft_putchar_fd(c, 1);
-	gen->size++;
-	if (ident.flags % F_MINUS == 0 && ident.width > 0)
-		gen->size += ft_print_space((ident.width - 1), ident, ident.flags % F_ZERO == 0);
+	pre[0] = (c) ? (unsigned char)c : '\0';
+	pre[1] = '\0';
+	ft_print_all(gen, ident, pre);
 }
 
 void			ft_printf_s(t_general *gen, t_ident ident)
 {
 	char	*str;
-	int		str_len;
-	int		cont;
 
 	if (!(str = ft_strdup(va_arg(gen->argument, char *))))
 		str = ft_strdup("(null)");
 	if (ident.precision == 0 && ident.width == 0)
 	{
-		free(str);
+		ft_strfree(&str);
 		return ;
 	}
-	str_len = ft_strlen(str);
-	if (ident.precision >= 0 && ident.precision < str_len)
-	{
+	if (ident.precision >= 0 && ident.precision < (int)ft_strlen(str))
 		str[ident.precision] = '\0';
-		str_len = ident.precision;
-	}
-	cont = ident.width - str_len;
-	if (ident.flags % F_MINUS != 0 && cont > 0)
-		gen->size += ft_print_space(cont, ident, ident.flags % F_ZERO == 0);
-	ft_putstr_fd(str, 1);
-	gen->size += str_len;
-	if (ident.flags % F_MINUS == 0 && cont > 0)
-		gen->size += ft_print_space(cont, ident, ident.flags % F_ZERO == 0);
-	free(str);
+	ft_print_all(gen, ident, str);
+	ft_strfree(&str);
 }
 
 void			ft_printf_p(t_general *gen, t_ident ident)
 {
 	size_t	p;
-	char	*nbr;
-	int		nbr_len;
+	char	*temp;
+	char	*str;
 
 	p = va_arg(gen->argument, size_t);
-	nbr = ft_itoa_base_u(p, BASE_HEX);
+	temp = ft_itoa_base_u(p, B_HEX);
 	if (ident.precision == 0 && p == 0)
-		nbr[ident.precision] = '\0';
-	gen->size += (nbr_len = ft_strlen(nbr) + 2);
-	if (ident.flags % F_MINUS != 0 && ident.width - nbr_len > 0)
-		gen->size += ft_print_space(ident.width - nbr_len, ident, ident.flags % F_ZERO == 0);
-	ft_putstr_fd("0x", 1);
-	ft_putstr_fd(nbr, 1);
-	if (ident.flags % F_MINUS == 0 && ident.width - nbr_len > 0)
-		gen->size += ft_print_space(ident.width - nbr_len, ident, ident.flags % F_ZERO == 0);
-	free(nbr);
+		temp[ident.precision] = '\0';
+	str = ft_strjoin("0x", temp);
+	ft_strfree(&temp);
+	ft_print_all(gen, ident, str);
+	ft_strfree(&str);
 }
 
 void			ft_printf_pct(t_general *gen, t_ident ident)
 {
-	if (ident.flags % F_MINUS != 0 && ident.width > 0)
-		gen->size += ft_print_space((ident.width - 1), ident, ident.flags % F_ZERO == 0);
-	ft_putchar_fd('%', 1);
-	gen->size++;
-	if (ident.flags % F_MINUS == 0 && ident.width > 0)
-		gen->size += ft_print_space((ident.width - 1), ident, ident.flags % F_ZERO == 0);	
+	char	pre[2];
+
+	pre[0] = '%';
+	pre[1] = '\0';
+	ft_print_all(gen, ident, pre);
 }

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_charac.c                                  :+:      :+:    :+:   */
+/*   ft_print_all.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 01:50:36 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/31 01:50:38 by lambrozi         ###   ########.fr       */
+/*   Updated: 2020/06/09 08:56:38 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_space(int cont, t_ident ident)
+void			ft_print_all(t_general *gen, t_ident ident, char *pre)
 {
-	int		i;
-	char	c;
+	int		cont;
+	int		str_len;
 
-	i = -1;
-	if (ident.flags % F_ZERO == 0 && ident.flags % F_MINUS != 0)
-		c = '0';
-	else
-		c = ' ';
-	while (++i < cont)
-		ft_putchar_fd(c, 1);
-	return (cont > 0) ? (cont) : (0);
+	str_len = ft_strlen(pre);
+	cont = ident.width - str_len;
+	if (ident.flags % F_MINUS != 0 && ident.width > 0)
+		gen->size += ft_print_space(cont, ident);
+	ft_putstr_fd(pre, 1);
+	gen->size += str_len;
+	if (ident.flags % F_MINUS == 0 && ident.width > 0)
+		gen->size += ft_print_space(cont, ident);
 }

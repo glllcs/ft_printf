@@ -77,6 +77,8 @@ void	get_conversion(t_general *gen, t_ident *ident)
 			ft_printf_pct(gen, *ident);
 		else if (ident->conversion == 'd' || ident->conversion == 'i')
 			ft_printf_d(gen, *ident);
+		else if (ident->conversion == 'u')
+			ft_printf_u(gen, *ident);
 	}
 	else
 		ident->error = 1;

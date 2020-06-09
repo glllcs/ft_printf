@@ -38,7 +38,7 @@ percorre string até encontrar %
 		%#p			UB
 		%<num>p		width
 		%*p			width by parameter	
-	%d
+	%d and %i
 		%+d 		value with + or -	
 		%-d 		left aligned
 		%0d			filled with 0 at left
@@ -47,8 +47,15 @@ percorre string até encontrar %
 		%.<num>d	minimum digits (filled with 0 at left)
 		%<num>d		width
 		%*d			width by parameter
-	%i
 	%u
+		%+u 		UB
+		%-u 		left aligned
+		%0u			filled with 0 at left
+		% u			UB
+		%.u 		N.H
+		%.<num>u	minimum digits (filled with 0 at left)
+		%<num>u		width
+		%*u			width by parameter
 	%x
 	%X
 -0.*

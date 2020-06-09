@@ -42,51 +42,67 @@ char		*ft_get_nbr_aux(char *i_nbr, int i_len, int new_len, char signal)
 	return (nbr);
 }
 
-char		*ft_get_nbr(long long n, t_ident ident)
+char		*ft_get_nbr(long long n, t_ident *ident)
 {
 	char	signal;
 	char	*temp;
 	char	*nbr;
 	int		nbr_len;
 
-	signal = ft_nbr_signal(&n, ident);
+	signal = ft_nbr_signal(&n, *ident);
 	temp = ft_itoa(n);
 	nbr_len = ft_strlen(temp);
-	if (n == 0 && ident.precision == 0 && signal == 0)
+	if (n == 0 && ident->precision == 0 && signal == 0)
 		nbr = NULL;
-	else if (ident.precision >= nbr_len)
-		nbr = ft_get_nbr_aux(temp, nbr_len, ident.precision, signal);
-	else if (ident.width > nbr_len && ident.flags % F_ZERO == 0 && \
-				ident.precision == -1) 
+	else if (ident->precision >= nbr_len)
+		nbr = ft_get_nbr_aux(temp, nbr_len, ident->precision, signal);
+	else if (ident->width > nbr_len && ident->flags % F_ZERO == 0 && \
+				ident->precision == -1) 
 	{
 		nbr_len += (signal != 0) ? 1 : 0;
-		nbr = ft_get_nbr_aux(temp, nbr_len, ident.width, signal);
+		nbr = ft_get_nbr_aux(temp, nbr_len, ident->width, signal);
 	}
 	else
 	{
 		nbr_len += (signal != 0) ? 1 : 0;
 		nbr = ft_get_nbr_aux(temp, nbr_len, nbr_len, signal);
 	}
-	free(temp);
+	if (ident->flags % F_ZERO == 0)
+		ident->flags /= F_ZERO;
+	ft_strfree(&temp);
 	return (nbr);
 }
+
+/*char		*ft_nbr_arg_to_string(t_general *gen, t_ident ident)
+{
+	long long	n;
+	char		signal;
+
+	n = va_arg(gen->argument, int);
+	signal = ft_nbr_signal(&n, ident);
+	temp = ft_itoa(n);
+
+}*/
+
 
 void		ft_printf_d(t_general *gen, t_ident ident)
 {
     long long	n;
 	char		*nbr;
-	int			nbr_len;
-	int			cont;
 
 	n = va_arg(gen->argument, int);
-	nbr = ft_get_nbr(n, ident);
-	nbr_len = ft_strlen(nbr);
-	cont = ident.width - nbr_len;
-	if (ident.flags % F_MINUS != 0 && cont > 0)
-		gen->size += ft_print_space(cont, ident, 0);
-	ft_putstr_fd(nbr, 1);
-	gen->size += nbr_len;
-	if (ident.flags % F_MINUS == 0 && cont > 0)
-		gen->size += ft_print_space(cont, ident, 0);
-	free(nbr);
+	nbr = ft_get_nbr(n, &ident);
+	ft_print_all(gen, ident, nbr);
+	ft_strfree(&nbr);
+}
+
+void		ft_printf_u(t_general *gen, t_ident ident)
+{
+    long long	n;
+	char		*nbr;
+
+	n = va_arg(gen->argument, int);
+	nbr = ft_get_nbr(n, &ident);
+	ft_print_all(gen, ident, nbr);
+	ft_strfree(&nbr);
 }

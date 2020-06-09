@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_charac.c                                  :+:      :+:    :+:   */
+/*   ft_strfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 01:50:36 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/31 01:50:38 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/06/09 08:39:36 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/06/09 08:39:56 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_space(int cont, t_ident ident)
+void             ft_strfree(char **str)
 {
-	int		i;
-	char	c;
-
-	i = -1;
-	if (ident.flags % F_ZERO == 0 && ident.flags % F_MINUS != 0)
-		c = '0';
-	else
-		c = ' ';
-	while (++i < cont)
-		ft_putchar_fd(c, 1);
-	return (cont > 0) ? (cont) : (0);
+        if (str == 0)
+                return ;
+        if (*str)
+                free(*str);
+        *str = 0;
 }
