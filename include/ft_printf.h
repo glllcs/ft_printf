@@ -27,8 +27,9 @@
 # define F_SPACE	7
 # define F_HASH		11
 
-# define B_DEC	"0123456789"
-# define B_HEX	"0123456789abcdef"
+# define B_DEC		"0123456789"
+# define B_HEX_L	"0123456789abcdef"
+# define B_HEX_U	"0123456789ABCDEF"
 
 typedef struct	s_general
 {
@@ -53,7 +54,7 @@ typedef struct	s_ident
 int				ft_printf(const char *phrase, ...);
 void			ft_init_ident(t_ident *identifier);
 void			get_flags(t_general *gen, t_ident *ident);
-int				get_sizes(t_general *gen);
+int				get_sizes(t_general *gen, t_ident *ident);
 void			get_limits(t_general *gen, t_ident *ident);
 void			get_conversion(t_general *gen, t_ident *ident);
 int				ft_print_space(int cont, t_ident ident);
@@ -65,5 +66,6 @@ void			ft_printf_u(t_general *gen, t_ident ident);
 void			ft_printf_pct(t_general *gen, t_ident ident);
 void			ft_strfree(char **str);
 void			ft_print_all(t_general *gen, t_ident ident, char *pre);
+char			*ft_itoa_case(long long n, t_ident ident);
 
 #endif

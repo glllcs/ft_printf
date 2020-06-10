@@ -47,7 +47,7 @@ void			ft_printf_p(t_general *gen, t_ident ident)
 	char	*str;
 
 	p = va_arg(gen->argument, size_t);
-	temp = ft_itoa_base_u(p, B_HEX);
+	temp = ft_itoa_base_u(p, B_HEX_L);
 	if (ident.precision == 0 && p == 0)
 		temp[ident.precision] = '\0';
 	str = ft_strjoin("0x", temp);

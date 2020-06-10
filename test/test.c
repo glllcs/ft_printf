@@ -189,6 +189,57 @@ void	test_d(void)
 	printf("\n");
 }
 
+void	test_x(void)
+{
+	printf("1printf:\t.%10x.\n", 0);
+	ft_printf("1ft_printf:\t.%10x.\n", 0);
+	printf("\n");
+	printf("2printf:\t.%05.2x.\n", 43225);
+	ft_printf("2ft_printf:\t.%05.2x.\n", 43225);
+	printf("\n");
+	printf("3printf:\t.%05x.\n", 42);
+	ft_printf("3ft_printf:\t.%05x.\n", 42);
+	printf("\n");
+	printf("4printf:\t.%-8x.\n", -42);
+	ft_printf("4ft_printf:\t.%-8x.\n", -42);
+	printf("\n");
+	printf("5printf:\t.%.x.\n", 42);
+	ft_printf("5ft_printf:\t.%.x.\n", 42);
+	printf("\n");
+	printf("6printf:\t.%2.5x.\n", -42);
+	ft_printf("6ft_printf:\t.%2.5x.\n", -42);
+	printf("\n");
+	printf("7printf:\t.%015x.\n", -42);
+	ft_printf("7ft_printf:\t.%015x.\n", -42);
+	printf("\n");
+	printf("8printf:\t.%015.7x.\n", 42);
+	ft_printf("8ft_printf:\t.%015.7x.\n", 42);
+	printf("\n");
+	printf("9printf:\t.%.x.\n", 0);
+	ft_printf("9ft_printf:\t.%.x.\n", 0);
+	printf("\n");
+	printf("10printf:\t.%2.x.\n", 0);
+	ft_printf("10ft_printf:\t.%2.x.\n", 0);
+	printf("\n");
+	printf("11printf:\t.%.2x.\n", 0);
+	ft_printf("11ft_printf:\t.%.2x.\n", 0);
+	printf("\n");
+	printf("12printf:\t.%08.3x.\n", 456);
+	ft_printf("12ft_printf:\t.%08.3x.\n", 456);
+	printf("\n");
+	printf("13printf:\t.%08.2x.\n", 456);
+	ft_printf("13ft_printf:\t.%08.2x.\n", 456);
+	printf("\n");
+	printf("14printf:\t.%08.5x.\n", 456);
+	ft_printf("14ft_printf:\t.%08.5x.\n", 456);
+	printf("\n");
+	printf("15printf:\t.%03x.\n", -456);
+	ft_printf("15ft_printf:\t.%03x.\n", -456);
+	printf("\n");
+	printf("16printf:\t.%x.\n", -456);
+	ft_printf("16ft_printf:\t.%x.\n", -456);
+}
+
 void	test_u(void)
 {
 	printf("3printf:\t.%05u.\n", 42);
@@ -269,10 +320,11 @@ void	test_float(void)
 int	main(void)
 {
 //	test_c();
-	test_s();
+//	test_s();
 //	test_p();
 //	test_pct();
 //	test_d();
 //	test_u();
+	test_x();
 	return (0);
 }

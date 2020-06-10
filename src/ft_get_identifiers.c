@@ -32,7 +32,7 @@ void	get_flags(t_general *gen, t_ident *ident)
 	}
 }
 
-int		get_sizes(t_general *gen)
+int		get_sizes(t_general *gen, t_ident *ident)
 {
 	int		size;
 
@@ -41,6 +41,11 @@ int		get_sizes(t_general *gen)
 	{
 		size = va_arg(gen->argument, int);
 		gen->posit++;
+		if (size < 0)
+		{
+			ident->flags *= F_MINUS;
+			size *= -1;
+		}
 	}
 	else
 	{
@@ -53,11 +58,11 @@ int		get_sizes(t_general *gen)
 
 void	get_limits(t_general *gen, t_ident *ident)
 {
-	ident->width = get_sizes(gen);
+	ident->width = get_sizes(gen, ident);
 	if (gen->input[gen->posit] == '.')
 	{
 		gen->posit++;
-		ident->precision = get_sizes(gen);
+		ident->precision = get_sizes(gen, ident);
 	}
 }
 
@@ -75,7 +80,8 @@ void	get_conversion(t_general *gen, t_ident *ident)
 			ft_printf_p(gen, *ident);
 		else if (ident->conversion == '%')
 			ft_printf_pct(gen, *ident);
-		else if (ident->conversion == 'd' || ident->conversion == 'i')
+		else if (ident->conversion == 'd' || ident->conversion == 'i' || \
+					ident->conversion == 'x' || ident->conversion == 'X')
 			ft_printf_d(gen, *ident);
 		else if (ident->conversion == 'u')
 			ft_printf_u(gen, *ident);
