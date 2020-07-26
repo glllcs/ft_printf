@@ -19,7 +19,7 @@ LIBFTPRINTF	= $(LIBFTPRINTF_DIR)/libftprintf.a
 LIBFT_DIR	= ../libft
 
 CC		= gcc
-CC_FLAGS	= -g -Wall -Wextra -Werror \
+CC_FLAGS	= -g -Wall -Wextra  \
 		  -I$(LIBFT_DIR) \
 		  -I$(LIBFTPRINTF_DIR)/include \
 		  -L$(LIBFT_DIR) \

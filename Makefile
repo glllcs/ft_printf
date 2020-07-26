@@ -27,7 +27,7 @@ ODIR		= ./obj
 OBJ		= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
 CC		= gcc
-C_FLAGS		=	-Wall -Werror -Wextra \
+C_FLAGS		=	\
 			-I $(IDIR) \
 			-I $(LIBFT_DIR) \
 			-g

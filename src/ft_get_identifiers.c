@@ -16,7 +16,7 @@
 void	get_flags(t_general *gen, t_ident *ident)
 {
 	gen->posit++;
-	while (ft_strchr(FLAGS, gen->input[gen->posit]))
+	while (ft_strchr(FLAGS, gen->input[gen->posit]) && gen->input[gen->posit])
 	{
 		if (gen->input[gen->posit] == '-')
 			ident->flags *= F_MINUS;
@@ -41,7 +41,7 @@ int		get_sizes(t_general *gen, t_ident *ident)
 	{
 		size = va_arg(gen->argument, int);
 		gen->posit++;
-		if (size < 0)
+		if (size < 0 && gen->input[gen->posit - 2] != '.')
 		{
 			ident->flags *= F_MINUS;
 			size *= -1;
@@ -50,7 +50,7 @@ int		get_sizes(t_general *gen, t_ident *ident)
 	else
 	{
 		size = ft_atoi(&gen->input[gen->posit]);
-		while (ft_strchr(DIGITS, gen->input[gen->posit]))
+		while (ft_strchr(DIGITS, gen->input[gen->posit]) && gen->input[gen->posit])
 			gen->posit++;
 	}
 	return (size);
