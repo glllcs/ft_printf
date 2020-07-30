@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-void             ft_strfree(char **str)
+void	ft_strfree(char **str)
 {
-        if (str == 0)
-                return ;
-        if (*str)
-                free(*str);
-        *str = 0;
+	if (str == 0)
+		return ;
+	if (*str)
+		free(*str);
+	*str = 0;
 }

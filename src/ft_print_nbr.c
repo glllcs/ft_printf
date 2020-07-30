@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	ft_nbr_signal(long long *n, t_ident ident)
+char		ft_nbr_signal(long long *n, t_ident ident)
 {
 	if (ident.conversion == 'x' || ident.conversion == 'X')
 		return (0);
@@ -58,8 +58,8 @@ char		*ft_get_nbr(long long n, t_ident *ident)
 		nbr = NULL;
 	else if (ident->precision >= nbr_len)
 		nbr = ft_get_nbr_aux(temp, nbr_len, ident->precision, signal);
-	else if (ident->width > nbr_len && ident->flags % F_ZERO == 0 && \
-				ident->precision == -1) 
+	else if (ident->width > nbr_len && ident->flags % F_ZERO == 0 &&
+				ident->flags % F_MINUS != 0 && ident->precision == -1)
 	{
 		nbr_len += (signal != 0) ? 1 : 0;
 		nbr = ft_get_nbr_aux(temp, nbr_len, ident->width, signal);
@@ -79,9 +79,8 @@ char		*ft_itoa_case(long long n, t_ident ident)
 {
 	char		*nbr;
 
-	if (ident.conversion == 'd' || ident.conversion == 'i')
-		nbr = ft_itoa(n);
-	else if (ident.conversion == 'u')
+	if (ident.conversion == 'd' || ident.conversion == 'i' ||
+			ident.conversion == 'u')
 		nbr = ft_itoa_base_u(n, B_DEC);
 	else if (ident.conversion == 'x')
 		nbr = ft_itoa_base_u((unsigned int)n, B_HEX_L);
@@ -92,10 +91,9 @@ char		*ft_itoa_case(long long n, t_ident ident)
 	return (nbr);
 }
 
-
 void		ft_printf_d(t_general *gen, t_ident ident)
 {
-    long long	n;
+	long long	n;
 	char		*nbr;
 
 	n = va_arg(gen->argument, int);
@@ -106,7 +104,7 @@ void		ft_printf_d(t_general *gen, t_ident ident)
 
 void		ft_printf_u(t_general *gen, t_ident ident)
 {
-    long long	n;
+	long long	n;
 	char		*nbr;
 
 	n = va_arg(gen->argument, long);

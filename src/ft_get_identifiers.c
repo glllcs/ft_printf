@@ -32,6 +32,16 @@ void	get_flags(t_general *gen, t_ident *ident)
 	}
 }
 
+void	get_limits(t_general *gen, t_ident *ident)
+{
+	ident->width = get_sizes(gen, ident);
+	if (gen->input[gen->posit] == '.')
+	{
+		gen->posit++;
+		ident->precision = get_sizes(gen, ident);
+	}
+}
+
 int		get_sizes(t_general *gen, t_ident *ident)
 {
 	int		size;
@@ -50,20 +60,11 @@ int		get_sizes(t_general *gen, t_ident *ident)
 	else
 	{
 		size = ft_atoi(&gen->input[gen->posit]);
-		while (ft_strchr(DIGITS, gen->input[gen->posit]) && gen->input[gen->posit])
+		while (ft_strchr(DIGITS, gen->input[gen->posit]) &&
+				gen->input[gen->posit])
 			gen->posit++;
 	}
 	return (size);
-}
-
-void	get_limits(t_general *gen, t_ident *ident)
-{
-	ident->width = get_sizes(gen, ident);
-	if (gen->input[gen->posit] == '.')
-	{
-		gen->posit++;
-		ident->precision = get_sizes(gen, ident);
-	}
 }
 
 void	get_conversion(t_general *gen, t_ident *ident)
@@ -80,7 +81,7 @@ void	get_conversion(t_general *gen, t_ident *ident)
 			ft_printf_p(gen, *ident);
 		else if (ident->conversion == '%')
 			ft_printf_pct(gen, *ident);
-		else if (ident->conversion == 'd' || ident->conversion == 'i' || \
+		else if (ident->conversion == 'd' || ident->conversion == 'i' ||
 					ident->conversion == 'x' || ident->conversion == 'X')
 			ft_printf_d(gen, *ident);
 		else if (ident->conversion == 'u')
