@@ -12,16 +12,31 @@
 
 #include "ft_printf.h"
 
+/*
+** Prepare the convertion in case of %c:
+** Creates a string pre whith the character and a '\0'.
+** Calls ft_print_all to print the full identifier.
+*/
+
 void			ft_printf_c(t_general *gen, t_ident ident)
 {
 	int		c;
-	char	pre[2];
+	char	pre[3];
 
 	c = va_arg(gen->argument, int);
-	pre[0] = (c) ? (unsigned char)c : '\0';
-	pre[1] = '\0';
+	//pre[0] = c;
+	pre[0] = (c) ? (unsigned char)c : '\\';
+	pre[1] = (c) ? '\0' : '0';
+	pre[2] = '\0';
 	ft_print_all(gen, ident, pre);
 }
+
+/*
+** Prepare the convertion in case of %s:
+** Allocates a string str whith the string to be printed.
+** Calls ft_print_all to print the full identifier.
+** Frees str
+*/
 
 void			ft_printf_s(t_general *gen, t_ident ident)
 {

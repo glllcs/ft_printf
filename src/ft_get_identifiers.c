@@ -13,6 +13,10 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+/*
+** While there's a flag in the convertion, saves it in ident->flags
+*/
+
 void	get_flags(t_general *gen, t_ident *ident)
 {
 	gen->posit++;
@@ -32,6 +36,12 @@ void	get_flags(t_general *gen, t_ident *ident)
 	}
 }
 
+/*
+** Gets both width and precision to the convertion and save them, with the
+** help of the function get_sizes, at ident->width and ident->precision, 
+** respectively
+*/
+
 void	get_limits(t_general *gen, t_ident *ident)
 {
 	ident->width = get_sizes(gen, ident);
@@ -41,6 +51,12 @@ void	get_limits(t_general *gen, t_ident *ident)
 		ident->precision = get_sizes(gen, ident);
 	}
 }
+
+/*
+** If the character correspondent to the size is an *, gets the argument.
+** If the number is already written, transforms it in a string via ft_atoi.
+** Returns the number correspont to the width or the precision.
+*/
 
 int		get_sizes(t_general *gen, t_ident *ident)
 {
@@ -66,6 +82,12 @@ int		get_sizes(t_general *gen, t_ident *ident)
 	}
 	return (size);
 }
+
+/*
+** Atributes the conversion, if it's in CONVERSION, to ident->conversion.
+** Calls the correspondent function depending on the convertion.
+** If it isn't in CONVERSION, atributes 1 to ident->error
+*/
 
 void	get_conversion(t_general *gen, t_ident *ident)
 {
