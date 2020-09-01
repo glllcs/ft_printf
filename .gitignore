@@ -5,3 +5,4 @@ obj/
 test/printf-tester/
 .vscode/*
 ft_printf.code-workspace
+lrcouto/

@@ -98,9 +98,6 @@ void	test_s(void)
 	printf("14printf:\t.%10s.\n", NULL);
 	ft_printf("14ft_printf:\t.%10s.\n", NULL);
 	printf("\n");
-	printf("15printf:\t.%10s %-10s %0s %s.\n", "Parabéns", "pra", "você", "Lucas");
-	ft_printf("15ft_printf:\t.%10s %-10s %0s %s.\n", "Parabéns", "pra", "você", "Lucas");
-	printf("\n");
 	printf("printf:\t\t.%.*s.\n", -3, "hello");
 	ft_printf("ft_printf:\t.%.*s.\n", -3, "hello");
 	printf("\n");
@@ -134,13 +131,6 @@ void	test_p(void)
 	printf("\n");
 	printf("7printf:\t.%2.p.\n", NULL);
 	ft_printf("7ft_printf:\t.%2.p.\n", NULL);
-	printf("\n");
-	printf("printf:\t\t.%2.9p.\n", 1234);
-	ft_printf("ft_printf:\t.%2.9p.\n", 1234);
-	printf("\n");
-	printf("printf:\t\t.%.5p.\n", 0);
-	ft_printf("ft_printf:\t.%.5p.\n", 0);
-	printf("\n");
 }
 
 void	test_pct(void)
@@ -225,28 +215,6 @@ void	test_d(void)
 	printf("\n");
 	printf("18printf:\t.%010.*d.\n", -7, -54);
 	ft_printf("18ft_printf:\t.%010.*d.\n", -7, -54);
-	printf("\n");
-	printf("printf:\t\t.%d.\n", -2147483648);
-	ft_printf("ft_printf:\t.%d.\n", -2147483648);
-	printf("\n");
-	printf("printf:\t\t.%d.\n", 2147483647 + 1);
-	ft_printf("ft_printf:\t.%d.\n", 2147483647 + 1);
-	printf("\n");
-	printf("printf:\t\t.%i.\n", -2147483648);
-	ft_printf("ft_printf:\t.%i.\n", -2147483648);
-	printf("\n");
-	printf("printf:\t\t.%i.\n", 2147483647 + 1);
-	ft_printf("ft_printf:\t.%i.\n", 2147483647 + 1);
-	printf("\n");
-	printf("printf:\t\t.%.*i.\n", -6, -3);
-	ft_printf("ft_printf:\t.%.*i.\n", -6, -3);
-	printf("\n");
-	printf("printf:\t\t.%0*i.\n", -7, -54);
-	ft_printf("ft_printf:\t.%0*i.\n", -7, -54);
-	printf("\n");
-	printf("printf:\t\t.%0-7i.\n", -54);
-	ft_printf("ft_printf:\t.%0-7i.\n", -54);
-	printf("\n");
 }
 
 void	test_x(void)
@@ -341,6 +309,9 @@ void	test_u(void)
 	printf("15printf:\t.%03u.\n", -456);
 	ft_printf("15ft_printf:\t.%03u.\n", -456);
 	printf("\n");
+	printf("16printf:\t.%u.\n", -12);
+	ft_printf("16ft_printf:\t.%u.\n", -12);
+	printf("\n");
 }
 
 void	test_int(void)
@@ -379,12 +350,31 @@ void	test_float(void)
 
 int	main(void)
 {
+	int j=-12;
 //	test_c();
 //	test_s();
-	test_p();
+//	test_p();
 //	test_pct();
 //	test_d();
 //	test_u();
+	printf("16printf:\t.%0*.*d.\n", 2, 2, 0);
+	ft_printf("16ft_printf:\t.%0*.*d.\n", 2, 2, 0);
+	printf("\n");
+	printf("16printf:\t.%*.*d.\n", -2, 2, 0);
+	ft_printf("16ft_printf:\t.%*.*d.\n", -2, 2, 0);
+	printf("\n");
+	printf("16printf:\t.%*.*d.\n", 2, -2, 0);
+	ft_printf("16ft_printf:\t.%*.*d.\n", 2, -2, 0);
+	printf("\n");
+	printf("16printf:\t.%0*.*d.\n", -2, -2, 0);
+	ft_printf("16ft_printf:\t.%0*.*d.\n", -2, -2, 0);
+	printf("\n");
+	printf("16printf:\t.%0*.*d.\n", 4, 3, 10);
+	ft_printf("16ft_printf:\t.%0*.*d.\n", 4, 3, 10);
+	printf("\n");
+	printf("16printf:\t.%0*.*d.\n", 4, -3, 10);
+	ft_printf("16ft_printf:\t.%0*.*d.\n", 4, -3, 10);
+	printf("\n");
 //	test_x();
 	return (0);
 }

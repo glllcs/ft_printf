@@ -37,7 +37,10 @@ C_FLAGS		=	\
 all: $(NAME)
 
 $(NAME) : $(OBJ)
+	make -C $(LIBFT_DIR)
+	cp libft/libft.a ./$@
 	ar rcs $@ $^
+	ranlib $@
 
 $(ODIR)/%.o: $(SDIR)/%.c $(LIBFT)
 	mkdir -p $(ODIR)
