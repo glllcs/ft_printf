@@ -104,8 +104,8 @@ void		ft_printf_d(t_general *gen, t_ident ident)
 
 void		ft_printf_u(t_general *gen, t_ident ident)
 {
-	long long	n;
-	char		*nbr;
+	unsigned int	n;
+	char			*nbr;
 
 	n = va_arg(gen->argument, long long);
 	nbr = ft_get_nbr(n, &ident);
