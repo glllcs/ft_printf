@@ -312,6 +312,9 @@ void	test_u(void)
 	printf("16printf:\t.%u.\n", -12);
 	ft_printf("16ft_printf:\t.%u.\n", -12);
 	printf("\n");
+	printf("17printf:\t.%0*.*d.\n", 4, -3, 10);
+	ft_printf("17ft_printf:\t.%0*.*d.\n", 4, -3, 10);
+	printf("\n");
 }
 
 void	test_int(void)
@@ -351,29 +354,15 @@ void	test_float(void)
 int	main(void)
 {
 	int j=-12;
+	char c='a';
 //	test_c();
 //	test_s();
 //	test_p();
 //	test_pct();
 //	test_d();
 //	test_u();
-	printf("16printf:\t.%0*.*d.\n", 2, 2, 0);
-	ft_printf("16ft_printf:\t.%0*.*d.\n", 2, 2, 0);
-	printf("\n");
-	printf("16printf:\t.%*.*d.\n", -2, 2, 0);
-	ft_printf("16ft_printf:\t.%*.*d.\n", -2, 2, 0);
-	printf("\n");
-	printf("16printf:\t.%*.*d.\n", 2, -2, 0);
-	ft_printf("16ft_printf:\t.%*.*d.\n", 2, -2, 0);
-	printf("\n");
-	printf("16printf:\t.%0*.*d.\n", -2, -2, 0);
-	ft_printf("16ft_printf:\t.%0*.*d.\n", -2, -2, 0);
-	printf("\n");
-	printf("16printf:\t.%0*.*d.\n", 4, 3, 10);
-	ft_printf("16ft_printf:\t.%0*.*d.\n", 4, 3, 10);
-	printf("\n");
-	printf("16printf:\t.%0*.*d.\n", 4, -3, 10);
-	ft_printf("16ft_printf:\t.%0*.*d.\n", 4, -3, 10);
+	printf("16printf:\t.%0*.*d.\n", 3, 1, c);
+	ft_printf("16ft_printf:\t.%0*.*d.\n", 3, 1, c);
 	printf("\n");
 //	test_x();
 	return (0);
