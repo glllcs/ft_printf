@@ -353,16 +353,30 @@ void	test_float(void)
 
 int	main(void)
 {
-	int j=-12;
-	char c='a';
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+//	int		f = 42;
+//	int		g = 25;
+//	int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
 //	test_c();
 //	test_s();
 //	test_p();
 //	test_pct();
 //	test_d();
 //	test_u();
-	printf("16printf:\t.%0*.*d.\n", 3, 1, c);
-	ft_printf("16ft_printf:\t.%0*.*d.\n", 3, 1, c);
+	a = 2;
+	b = 0;
+	ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
+	printf("\n");
+	printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
 	printf("\n");
 //	test_x();
 	return (0);
