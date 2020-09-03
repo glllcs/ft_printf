@@ -64,7 +64,7 @@ void	print_ident(t_ident ident)
 
 void	ft_print_ident(t_general *gen, t_ident *ident)
 {
-	//ft_init_ident(&ident);
+	ft_init_ident(ident);
 	get_flags(gen, ident);
 	get_limits(gen, ident);
 	get_conversion(gen, ident);
@@ -84,7 +84,7 @@ int		ft_printf(const char *input, ...)
 
 	gen.posit = 0;
 	gen.size = 0;
-	ft_init_ident(&ident);
+	//ft_init_ident(&ident);
 	//ft_init_general(&gen, input);
 	gen.input = ft_strdup(input);
 	va_start(gen.argument, input);
