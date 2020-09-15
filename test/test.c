@@ -109,8 +109,12 @@ void	test_s(void)
 void	test_p(void)
 {
 	char	*p = "palavra";
+	int		a = 123;
 
 //	printf("%s", ft_itoa_base_u(4294978743, BASE_HEX));
+	printf("0printf:\t.%p.\n", p);
+	ft_printf("0ft_printf:\t.%p.\n", p);
+	printf("\n");
 	printf("1printf:\t.%.p.\n", p);
 	ft_printf("1ft_printf:\t.%.p.\n", p);
 	printf("\n");
@@ -131,6 +135,12 @@ void	test_p(void)
 	printf("\n");
 	printf("7printf:\t.%2.p.\n", NULL);
 	ft_printf("7ft_printf:\t.%2.p.\n", NULL);
+	printf("\n");
+	printf("8printf:\t.%.5p.\n", 0);
+	ft_printf("8ft_printf:\t.%.5p.\n", 0);
+	printf("\n");
+	printf("8printf:\t.%.11p.\n", a);
+	ft_printf("8ft_printf:\t.%.11p.\n", a);
 }
 
 void	test_pct(void)
@@ -215,6 +225,22 @@ void	test_d(void)
 	printf("\n");
 	printf("18printf:\t.%010.*d.\n", -7, -54);
 	ft_printf("18ft_printf:\t.%010.*d.\n", -7, -54);
+	printf("\n");
+	printf("19printf:\t.%0082.d.\n", 54);
+	ft_printf("19ft_printf:\t.%0082.d.\n", 54);
+	printf("\n");
+	printf("19printf:\t.%082.d.\n", 54);
+	ft_printf("19ft_printf:\t.%082.d.\n", 54);
+	printf("\n");
+	printf("19printf:\t.%00082.d.\n", 54);
+	ft_printf("19ft_printf:\t.%00082.d.\n", 54);
+	printf("\n");
+	printf("19printf:\t.%-82.d.\n", 54);
+	ft_printf("19ft_printf:\t.%-82.d.\n", 54);
+	printf("\n");
+	printf("19printf:\t.%--82.d.\n", 54);
+	ft_printf("19ft_printf:\t.%--82.d.\n", 54);
+	printf("\n");
 }
 
 void	test_x(void)
@@ -353,31 +379,12 @@ void	test_float(void)
 
 int	main(void)
 {
-	int		a = -4;
-	int		b = 0;
-	char	c = 'a';
-	int		d = 2147483647;
-	int		e = -2147483648;
-//	int		f = 42;
-//	int		g = 25;
-//	int		h = 4200;
-	int		i = 8;
-	int		j = -12;
-	int		k = 123456789;
-	int		l = 0;
-	int		m = -12345678;
 //	test_c();
 //	test_s();
-//	test_p();
+	test_p();
 //	test_pct();
 //	test_d();
 //	test_u();
-	a = 2;
-	b = 0;
-	ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
-	printf("\n");
-	printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
-	printf("\n");
 //	test_x();
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lambrozi </var/mail/lambrozi>              +#+  +:+       +#+        */
+/*   By: lambrozi <lambrozi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/03 09:27:03 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/09/03 09:27:37 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/09/03 10:10:27 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/09/03 10:10:31 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ int				get_sizes(t_general *gen, t_ident *ident);
 void			get_limits(t_general *gen, t_ident *ident);
 void			get_conversion(t_general *gen, t_ident *ident);
 int				ft_print_space(int cont, t_ident ident);
-void			ft_printf_c(t_general *gen, t_ident ident);
-void			ft_printf_s(t_general *gen, t_ident ident);
-void			ft_printf_p(t_general *gen, t_ident ident);
-void			ft_printf_d(t_general *gen, t_ident ident);
-void			ft_printf_u(t_general *gen, t_ident ident);
-void			ft_printf_pct(t_general *gen, t_ident ident);
+void			ft_prepare_c(t_general *gen, t_ident ident);
+void			ft_prepare_s(t_general *gen, t_ident ident);
+void			ft_prepare_p(t_general *gen, t_ident ident);
+void			ft_prepare_nbr(t_general *gen, t_ident ident);
+void			ft_prepare_pct(t_general *gen, t_ident ident);
 void			ft_strfree(char **str);
 void			ft_print_all(t_general *gen, t_ident ident, char *pre);
 char			*ft_itoa_case(long long n, t_ident ident);
+char			ft_signal(long long *n, t_ident ident);
+char			*ft_put_zeros(char *i_nbr, int i_len, int new_len, char sig);
+char			*ft_get_nbr(long long n, t_ident *ident);
 
 #endif

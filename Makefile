@@ -6,7 +6,7 @@
 #    By: lambrozi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/20 13:44:53 by lambrozi          #+#    #+#              #
-#    Updated: 2020/05/23 20:21:24 by lambrozi         ###   ########.fr        #
+#    Updated: 2020/09/03 10:15:43 by lambrozi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ LIBFT_DIR	= ./libft
 LIBFT		= ${LIBFT_DIR}/libft.a
 
 SDIR		= ./src
-_SRC		=	ft_printf.c ft_get_identifiers.c ft_print_charac.c \
-				ft_print_space.c ft_print_nbr.c ft_strfree.c ft_print_all.c
+_SRC		=	ft_printf.c ft_get_identifiers.c ft_prepare.c \
+				ft_nbr_aux.c ft_strfree.c ft_print_all.c ft_print_space.c
 SRC		= $(addprefix $(SDIR)/,$(_SRC))
 
 ODIR		= ./obj
@@ -66,7 +66,7 @@ fclean: clean
 
 norm:
 	~/.norminette/norminette.rb $(SDIR) $(IDIR)
-	make -C $(LIBFT_DIR) norm 
+	#make -C $(LIBFT_DIR) norm 
 
 re: fclean all
 

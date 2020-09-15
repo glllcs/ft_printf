@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_identifiers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: lambrozi <lambrozi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 01:46:02 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/31 01:46:09 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/09/03 10:16:04 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/09/03 10:16:16 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	get_flags(t_general *gen, t_ident *ident)
 
 /*
 ** Gets both width and precision to the convertion and save them, with the
-** help of the function get_sizes, at ident->width and ident->precision, 
+** help of the function get_sizes, at ident->width and ident->precision,
 ** respectively
 */
 
@@ -96,18 +96,15 @@ void	get_conversion(t_general *gen, t_ident *ident)
 		ident->conversion = gen->input[gen->posit];
 		gen->posit++;
 		if (ident->conversion == 'c')
-			ft_printf_c(gen, *ident);
+			ft_prepare_c(gen, *ident);
 		else if (ident->conversion == 's')
-			ft_printf_s(gen, *ident);
+			ft_prepare_s(gen, *ident);
 		else if (ident->conversion == 'p')
-			ft_printf_p(gen, *ident);
+			ft_prepare_p(gen, *ident);
 		else if (ident->conversion == '%')
-			ft_printf_pct(gen, *ident);
-		else if (ident->conversion == 'd' || ident->conversion == 'i' ||
-					ident->conversion == 'x' || ident->conversion == 'X')
-			ft_printf_d(gen, *ident);
-		else if (ident->conversion == 'u')
-			ft_printf_u(gen, *ident);
+			ft_prepare_pct(gen, *ident);
+		else
+			ft_prepare_nbr(gen, *ident);
 	}
 	else
 		ident->error = 1;

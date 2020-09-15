@@ -6,3 +6,4 @@ test/printf-tester/
 .vscode/*
 ft_printf.code-workspace
 .42_Test_42_Logs_Here
+ft_printf_test

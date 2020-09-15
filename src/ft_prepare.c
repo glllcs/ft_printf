@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_charac.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: lambrozi <lambrozi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 01:50:36 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/31 01:50:38 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/09/03 10:12:13 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/09/03 10:14:59 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@
 ** Calls ft_print_all to print the full identifier.
 */
 
-void			ft_printf_c(t_general *gen, t_ident ident)
+void			ft_prepare_c(t_general *gen, t_ident ident)
 {
 	int		c;
 	char	pre[3];
 
 	c = va_arg(gen->argument, int);
-	//pre[0] = c;
 	pre[0] = (c) ? (unsigned char)c : '\\';
 	pre[1] = (c) ? '\0' : '0';
 	pre[2] = '\0';
@@ -38,7 +37,7 @@ void			ft_printf_c(t_general *gen, t_ident ident)
 ** Frees str
 */
 
-void			ft_printf_s(t_general *gen, t_ident ident)
+void			ft_prepare_s(t_general *gen, t_ident ident)
 {
 	char	*str;
 
@@ -55,27 +54,48 @@ void			ft_printf_s(t_general *gen, t_ident ident)
 	ft_strfree(&str);
 }
 
-void			ft_printf_p(t_general *gen, t_ident ident)
+void			ft_prepare_p(t_general *gen, t_ident ident)
 {
 	size_t	p;
 	char	*temp;
 	char	*str;
 
 	p = va_arg(gen->argument, size_t);
-	temp = ft_itoa_base_u(p, B_HEX_L);
-	if (ident.precision == 0 && p == 0)
-		temp[ident.precision] = '\0';
-	str = ft_strjoin("0x", temp);
+	temp = ft_get_nbr(p, &ident);
+	if (temp != NULL)
+		str = ft_strjoin("0x", temp);
+	else
+		str = ft_strdup("0x");
 	ft_strfree(&temp);
 	ft_print_all(gen, ident, str);
 	ft_strfree(&str);
 }
 
-void			ft_printf_pct(t_general *gen, t_ident ident)
+void			ft_prepare_pct(t_general *gen, t_ident ident)
 {
 	char	pre[2];
 
 	pre[0] = '%';
 	pre[1] = '\0';
 	ft_print_all(gen, ident, pre);
+}
+
+void			ft_prepare_nbr(t_general *gen, t_ident ident)
+{
+	long			n;
+	unsigned int	un;
+	char			*nbr;
+
+	if (ident.conversion == 'u')
+	{
+		un = va_arg(gen->argument, long long);
+		nbr = ft_get_nbr(un, &ident);
+	}
+	else
+	{
+		n = va_arg(gen->argument, int);
+		nbr = ft_get_nbr(n, &ident);
+	}
+	ft_print_all(gen, ident, nbr);
+	ft_strfree(&nbr);
 }

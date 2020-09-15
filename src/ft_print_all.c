@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_all.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: lambrozi <lambrozi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 01:50:36 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/06/09 08:56:38 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/09/03 10:22:03 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/09/03 10:23:12 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void			ft_print_all(t_general *gen, t_ident ident, char *pre)
 		else
 			ft_putchar_fd(*(pre + i), 1);
 	}
-	//ft_putstr_fd(pre, 1);
 	gen->size += str_len;
 	if (ident.flags % F_MINUS == 0 && ident.width > 0)
 		gen->size += ft_print_space(cont, ident);

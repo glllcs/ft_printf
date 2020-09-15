@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: lambrozi <lambrozi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/23 13:52:39 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/05/23 19:54:24 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/09/04 08:44:34 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/09/04 08:44:37 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Initialize struct t_ident
 */
+
 void	ft_init_ident(t_ident *identifier)
 {
 	identifier->flags = 1;
@@ -23,39 +24,6 @@ void	ft_init_ident(t_ident *identifier)
 	identifier->conversion = 0;
 	identifier->error = 0;
 }
-
-/* Only for test*/
-void	print_ident(t_ident ident)
-{
-	ft_putchar_fd('[', 1);
-	ft_putchar_fd('%', 1);
-	if (ident.flags % F_HASH == 0)
-		ft_putchar_fd('#', 1);
-	if (ident.flags % F_MINUS == 0)
-		ft_putchar_fd('-', 1);
-	if (ident.flags % F_PLUS == 0)
-		ft_putchar_fd('+', 1);
-	if (ident.flags % F_SPACE == 0)
-		ft_putchar_fd(' ', 1);
-	if (ident.flags % F_ZERO == 0)
-		ft_putchar_fd('0', 1);
-	if (ident.width != -1)
-		ft_putstr_fd(ft_itoa(ident.width), 1);
-	if (ident.precision != -1)
-	{
-		ft_putchar_fd('.', 1);
-		ft_putstr_fd(ft_itoa(ident.precision), 1);
-	}
-	ft_putchar_fd(ident.conversion, 1);
-	ft_putchar_fd(']', 1);
-}
-
-/*void	ft_init_general(t_general *gen, const char *input)
-{
-	gen->posit = 0;
-	gen->len = 0;
-	gen->input = ft_strdup(input);
-}*/
 
 /*
 ** For every identifier in ft_printf's call, initializes the ident's struct,
@@ -68,11 +36,10 @@ void	ft_print_ident(t_general *gen, t_ident *ident)
 	get_flags(gen, ident);
 	get_limits(gen, ident);
 	get_conversion(gen, ident);
-	//print_ident(*ident);
 }
 
 /*
-** Main function: goes through every char in the input and prints the literal 
+** Main function: goes through every char in the input and prints the literal
 ** characteres or calls ft_print_ident when the char is a %.
 ** Returns the total size of the printed string.
 */
@@ -84,8 +51,6 @@ int		ft_printf(const char *input, ...)
 
 	gen.posit = 0;
 	gen.size = 0;
-	//ft_init_ident(&ident);
-	//ft_init_general(&gen, input);
 	gen.input = ft_strdup(input);
 	va_start(gen.argument, input);
 	while (gen.input[gen.posit])
@@ -102,8 +67,5 @@ int		ft_printf(const char *input, ...)
 		}
 	}
 	va_end(gen.argument);
-	//ft_putchar_fd('[', 1);
-	//ft_putstr_fd(ft_itoa(gen.size), 1);
-	//ft_putchar_fd(']', 1);
 	return (gen.size);
 }

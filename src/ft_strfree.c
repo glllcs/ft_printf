@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lambrozi <lambrozi@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: lambrozi <lambrozi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/09 08:39:36 by lambrozi          #+#    #+#             */
-/*   Updated: 2020/06/09 08:39:56 by lambrozi         ###   ########.fr       */
+/*   Created: 2020/09/03 10:16:34 by lambrozi          #+#    #+#             */
+/*   Updated: 2020/09/03 10:16:36 by lambrozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
