@@ -1,9 +1,8 @@
-pft_2019/
-42TESTERS-PRINTF/
-*.a/
+*.a
 obj/
-test/printf-tester/
 .vscode/*
 ft_printf.code-workspace
-.42_Test_42_Logs_Here
-ft_printf_test
+test/pft_2019/
+test/42TESTERS-PRINTF/
+test/.42_Test_42_Logs_Here
+test/ft_printf_test/
