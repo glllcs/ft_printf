@@ -73,7 +73,7 @@ int		get_sizes(t_general *gen, t_ident *ident)
 			size *= -1;
 		}
 	}
-	else
+	else if (gen->input[gen->posit])
 	{
 		size = ft_atoi(&gen->input[gen->posit]);
 		while (ft_strchr(DIGITS, gen->input[gen->posit]) &&
@@ -91,7 +91,7 @@ int		get_sizes(t_general *gen, t_ident *ident)
 
 void	get_conversion(t_general *gen, t_ident *ident)
 {
-	if (ft_strchr(CONVERSION, gen->input[gen->posit]))
+	if (ft_strchr(CONVERSION, gen->input[gen->posit]) && gen->input[gen->posit])
 	{
 		ident->conversion = gen->input[gen->posit];
 		gen->posit++;
@@ -106,6 +106,4 @@ void	get_conversion(t_general *gen, t_ident *ident)
 		else
 			ft_prepare_nbr(gen, *ident);
 	}
-	else
-		ident->error = 1;
 }

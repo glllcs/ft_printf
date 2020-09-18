@@ -33,8 +33,7 @@
 
 typedef struct	s_general
 {
-	const char	*input;
-	char		*output;
+	char		*input;
 	va_list		argument;
 	int			size;
 	int			posit;
@@ -46,12 +45,10 @@ typedef struct	s_ident
 	int		width;
 	int		precision;
 	char	conversion;
-	char	*argument;
-	char	*pre_output;
-	int		error;
 }				t_ident;
 
 int				ft_printf(const char *phrase, ...);
+void			ft_print_ident(t_general *gen, t_ident *ident);
 void			ft_init_ident(t_ident *identifier);
 void			get_flags(t_general *gen, t_ident *ident);
 int				get_sizes(t_general *gen, t_ident *ident);

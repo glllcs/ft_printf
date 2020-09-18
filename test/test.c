@@ -109,7 +109,6 @@ void	test_s(void)
 void	test_p(void)
 {
 	char	*p = "palavra";
-	int		a = 123;
 
 //	printf("%s", ft_itoa_base_u(4294978743, BASE_HEX));
 	printf("0printf:\t.%p.\n", p);
@@ -136,11 +135,6 @@ void	test_p(void)
 	printf("7printf:\t.%2.p.\n", NULL);
 	ft_printf("7ft_printf:\t.%2.p.\n", NULL);
 	printf("\n");
-	printf("8printf:\t.%.5p.\n", 0);
-	ft_printf("8ft_printf:\t.%.5p.\n", 0);
-	printf("\n");
-	printf("8printf:\t.%.11p.\n", a);
-	ft_printf("8ft_printf:\t.%.11p.\n", a);
 }
 
 void	test_pct(void)
@@ -381,10 +375,11 @@ int	main(void)
 {
 //	test_c();
 //	test_s();
-	test_p();
+//	test_p();
 //	test_pct();
 //	test_d();
 //	test_u();
 //	test_x();
+	ft_printf("%");
 	return (0);
 }

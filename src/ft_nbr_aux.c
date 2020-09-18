@@ -80,7 +80,7 @@ char		*ft_put_zeros(char *i_nbr, int i_len, int new_len, char sig)
 {
 	char	*nbr;
 
-	nbr = (char *)ft_calloc(new_len + 1, sizeof(char));
+	nbr = (char *)ft_calloc(new_len + 2, sizeof(char));
 	ft_memset(nbr, '0', new_len + 1);
 	if (sig != 0)
 	{
