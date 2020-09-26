@@ -16,7 +16,7 @@
 # include "libft.h"
 # include <stdarg.h>
 
-# define CONVERSION	"cspdiuxX%"
+# define CONVERSION	"cspdiuxXo%"
 
 # define FLAGS		"-+0 #"
 # define DIGITS		"0123456789"
@@ -28,6 +28,7 @@
 # define F_HASH		11
 
 # define B_DEC		"0123456789"
+# define B_OCT		"01234567"
 # define B_HEX_L	"0123456789abcdef"
 # define B_HEX_U	"0123456789ABCDEF"
 
@@ -62,9 +63,9 @@ void			ft_prepare_nbr(t_general *gen, t_ident ident);
 void			ft_prepare_pct(t_general *gen, t_ident ident);
 void			ft_strfree(char **str);
 void			ft_print_all(t_general *gen, t_ident ident, char *pre);
-char			*ft_itoa_case(long long n, t_ident ident);
-char			ft_signal(long long *n, t_ident ident);
-char			*ft_put_zeros(char *i_nbr, int i_len, int new_len, char sig);
+char			*ft_sufix(long long n, t_ident ident);
+char			*ft_prefix(long long *n, t_ident ident);
+char			*ft_fill_zeros(char *pref, char *suf, int len_beg, int len_end);
 char			*ft_get_nbr(long long n, t_ident *ident);
 
 #endif

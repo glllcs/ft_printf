@@ -14,80 +14,91 @@
 
 char		*ft_get_nbr(long long n, t_ident *ident)
 {
-	char	signal;
-	char	*temp;
+	char	*prefix;
+	char	*sufix;
 	char	*nbr;
 	int		nbr_len;
 
-	signal = ft_signal(&n, *ident);
-	temp = ft_itoa_case(n, *ident);
-	nbr_len = ft_strlen(temp);
-	if (n == 0 && ident->precision == 0 && signal == 0)
-		nbr = NULL;
-	else if (ident->precision >= nbr_len)
-		nbr = ft_put_zeros(temp, nbr_len, ident->precision, signal);
+	prefix = ft_prefix(&n, *ident);
+	sufix = ft_sufix(n, *ident);
+	nbr_len = ft_strlen(sufix);
+	if ((n == 0 && ident->precision == 0) || ident->precision >= nbr_len)
+		nbr = ft_fill_zeros(prefix, sufix, nbr_len, ident->precision);
 	else
 	{
-		nbr_len += (signal != 0) ? 1 : 0;
+		nbr_len += ft_strlen(prefix);
 		if (ident->width > nbr_len && ident->flags % F_ZERO == 0 &&
 				ident->flags % F_MINUS != 0 && ident->precision < 0)
-			nbr = ft_put_zeros(temp, nbr_len, ident->width, signal);
+			nbr = ft_fill_zeros(prefix, sufix, nbr_len, ident->width);
 		else
-			nbr = ft_put_zeros(temp, nbr_len, nbr_len, signal);
+			nbr = ft_fill_zeros(prefix, sufix, nbr_len, nbr_len);
 	}
 	while (ident->flags % F_ZERO == 0)
 		ident->flags /= F_ZERO;
-	ft_strfree(&temp);
+	ft_strfree(&prefix);
+	ft_strfree(&sufix);
 	return (nbr);
 }
 
-char		ft_signal(long long *n, t_ident ident)
+char		*ft_prefix(long long *n, t_ident ident)
 {
-	if (ident.conversion == 'x' || ident.conversion == 'X' ||
+	if ((ident.conversion == 'x' && (ident.flags % F_HASH == 0 && *n != 0)) ||
 		ident.conversion == 'p')
-		return (0);
-	if (*n < 0)
+		return (ft_strdup("0x"));
+	else if (ident.conversion == 'X' && (ident.flags % F_HASH == 0 && *n != 0))
+		return (ft_strdup("0X"));
+	else if (ident.conversion == 'o' && (ident.flags % F_HASH == 0 && *n != 0))
+		return (ft_strdup("0"));
+	else if (ident.conversion == 'x' || ident.conversion == 'X' ||
+		ident.conversion == 'o')
+		return (NULL);
+	else if (*n < 0)
 	{
 		*n *= -1;
-		return ('-');
+		return (ft_strdup("-"));
 	}
 	else if (ident.flags % F_PLUS == 0)
-		return ('+');
+		return (ft_strdup("+"));
 	else if (ident.flags % F_SPACE == 0)
-		return (' ');
-	return (0);
+		return (ft_strdup(" "));
+	return (NULL);
 }
 
-char		*ft_itoa_case(long long n, t_ident ident)
+char		*ft_sufix(long long n, t_ident ident)
 {
 	char		*nbr;
 
-	if (ident.conversion == 'd' || ident.conversion == 'i' ||
+	if (n == 0 && ident.precision >= 0)
+		nbr = ft_strdup("");
+	else if (ident.conversion == 'p')
+		nbr = ft_itoa_base_u(n, B_HEX_L);
+	else if (ident.conversion == 'd' || ident.conversion == 'i' ||
 			ident.conversion == 'u')
 		nbr = ft_itoa_base_u(n, B_DEC);
 	else if (ident.conversion == 'x')
 		nbr = ft_itoa_base_u((unsigned int)n, B_HEX_L);
 	else if (ident.conversion == 'X')
 		nbr = ft_itoa_base_u((unsigned int)n, B_HEX_U);
-	else if (ident.conversion == 'p')
-		nbr = ft_itoa_base_u(n, B_HEX_L);
+	else if (ident.conversion == 'o')
+		nbr = ft_itoa_base_u(n, B_OCT);
 	else
 		nbr = NULL;
 	return (nbr);
 }
 
-char		*ft_put_zeros(char *i_nbr, int i_len, int new_len, char sig)
+char		*ft_fill_zeros(char *pref, char *suf, int len_beg, int len_end)
 {
-	char	*nbr;
+	char	*str;
+	int		pref_size;
 
-	nbr = (char *)ft_calloc(new_len + 2, sizeof(char));
-	ft_memset(nbr, '0', new_len + 1);
-	if (sig != 0)
+	pref_size = ft_strlen(pref);
+	str = (char *)ft_calloc(len_end + pref_size + 1, sizeof(char));
+	ft_memset(str, '0', len_end + pref_size);
+	if (pref_size > 0)
 	{
-		nbr[0] = sig;
-		ft_strlcpy(&nbr[new_len - i_len + 1], i_nbr, i_len + 1);
+		ft_strlcpy(&str[0], pref, pref_size + 1);
+		str[pref_size] = '0';
 	}
-	else
-		ft_strlcpy(&nbr[new_len - i_len], i_nbr, i_len + 1);
-	return (nbr);
+	ft_strlcpy(&str[len_end - len_beg + pref_size], suf, len_beg + 1);
+	return (str);
 }

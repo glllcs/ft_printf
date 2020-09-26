@@ -16,6 +16,7 @@ IDIR		= ./include
 TDIR		= ./test
 
 LIBFT_DIR	= ./libft
+LIBFT_IDIR	= ${LIBFT_DIR}/include
 LIBFT		= ${LIBFT_DIR}/libft.a
 
 SDIR		= ./src
@@ -29,7 +30,7 @@ OBJ		= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 CC		= gcc
 C_FLAGS		=	\
 			-I $(IDIR) \
-			-I $(LIBFT_DIR) \
+			-I $(LIBFT_IDIR) \
 			-g
 			#-L $(LIBFT_DIR) \
 			#-lft

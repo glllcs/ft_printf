@@ -57,16 +57,10 @@ void			ft_prepare_s(t_general *gen, t_ident ident)
 void			ft_prepare_p(t_general *gen, t_ident ident)
 {
 	size_t	p;
-	char	*temp;
 	char	*str;
 
 	p = va_arg(gen->argument, size_t);
-	temp = ft_get_nbr(p, &ident);
-	if (temp != NULL)
-		str = ft_strjoin("0x", temp);
-	else
-		str = ft_strdup("0x");
-	ft_strfree(&temp);
+	str = ft_get_nbr(p, &ident);
 	ft_print_all(gen, ident, str);
 	ft_strfree(&str);
 }
@@ -84,18 +78,18 @@ void			ft_prepare_nbr(t_general *gen, t_ident ident)
 {
 	long			n;
 	unsigned int	un;
-	char			*nbr;
+	char			*str;
 
 	if (ident.conversion == 'u')
 	{
 		un = va_arg(gen->argument, long long);
-		nbr = ft_get_nbr(un, &ident);
+		str = ft_get_nbr(un, &ident);
 	}
 	else
 	{
 		n = va_arg(gen->argument, int);
-		nbr = ft_get_nbr(n, &ident);
+		str = ft_get_nbr(n, &ident);
 	}
-	ft_print_all(gen, ident, nbr);
-	ft_strfree(&nbr);
+	ft_print_all(gen, ident, str);
+	ft_strfree(&str);
 }
