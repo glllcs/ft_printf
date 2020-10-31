@@ -17,6 +17,7 @@ void	test_c(void)
 {
 	char	c = 'x';
 
+	ft_printf("................%%c................\n");
 	printf("1printf:\t.%10.c.\n", c);
 	ft_printf("1ft_printf:\t.%10.c.\n", c);
 	printf("\n");
@@ -56,6 +57,7 @@ void	test_s(void)
 {
 	char	*p = "palavra";
 
+	ft_printf("................%%s................\n");
 	printf("1printf:\t.%10.s.\n", p);
 	ft_printf("1ft_printf:\t.%10.s.\n", p);
 	printf("\n");
@@ -110,6 +112,7 @@ void	test_p(void)
 {
 	char	*p = "palavra";
 
+	ft_printf("................%%p................\n");
 	printf("0printf:\t.%p.\n", p);
 	ft_printf("0ft_printf:\t.%p.\n", p);
 	printf("\n");
@@ -138,6 +141,7 @@ void	test_p(void)
 
 void	test_pct(void)
 {
+	ft_printf("................%%%%................\n");
 	printf("1printf:\t.%+%.\n");
 	ft_printf("1ft_printf:\t.%+%.\n");
 	printf("\n");
@@ -169,6 +173,7 @@ void	test_pct(void)
 
 void	test_d(void)
 {
+	ft_printf("................%%d................\n");
 	printf("1printf:\t.%+1d.\n", 0);
 	ft_printf("1ft_printf:\t.%+1d.\n", 0);
 	printf("\n");
@@ -241,6 +246,7 @@ void	test_d(void)
 
 void	test_x(void)
 {
+	ft_printf("................%%x................\n");
 	printf("1printf:\t.%10x.\n", 0);
 	ft_printf("1ft_printf:\t.%10x.\n", 0);
 	printf("\n");
@@ -292,6 +298,7 @@ void	test_x(void)
 
 void	test_u(void)
 {
+	ft_printf("................%%u................\n");
 	printf("1printf:\t.%u.\n", 42);
 	ft_printf("1ft_printf:\t.%u.\n", 42);
 	printf("\n");
