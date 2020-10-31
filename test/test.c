@@ -35,20 +35,20 @@ void	test_c(void)
 	printf("6printf:\t.%c.\n", '\0');
 	ft_printf("6ft_printf:\t.%c.\n", '\0');
 	printf("\n");
-	printf("printf:\t\t.%c.\n", '\x00');
-	ft_printf("ft_printf:\t.%c.\n", '\x00');
+	printf("7printf:\t\t.%c.\n", '\x00');
+	ft_printf("7ft_printf:\t.%c.\n", '\x00');
 	printf("\n");
-	printf("printf:\t\t.%5c.\n", '\x00');
-	ft_printf("ft_printf:\t.%5c.\n", '\x00');
+	printf("8printf:\t\t.%5c.\n", '\x00');
+	ft_printf("8ft_printf:\t.%5c.\n", '\x00');
 	printf("\n");
-	printf("printf:\t\t.%-5c.\n", '\x00');
-	ft_printf("ft_printf:\t.%-5c.\n", '\x00');
+	printf("9printf:\t\t.%-5c.\n", '\x00');
+	ft_printf("9ft_printf:\t.%-5c.\n", '\x00');
 	printf("\n");
-	printf("printf:\t\t.%c.\n", -0);
-	ft_printf("ft_printf:\t.%c.\n", -0);
+	printf("10printf:\t\t.%c.\n", -0);
+	ft_printf("10ft_printf:\t.%c.\n", -0);
 	printf("\n");
-	printf("printf:\t\t.%c.\n", 0);
-	ft_printf("ft_printf:\t.%c.\n", 0);
+	printf("11printf:\t\t.%c.\n", 0);
+	ft_printf("11ft_printf:\t.%c.\n", 0);
 	printf("\n");
 }
 
@@ -98,11 +98,11 @@ void	test_s(void)
 	printf("14printf:\t.%10s.\n", NULL);
 	ft_printf("14ft_printf:\t.%10s.\n", NULL);
 	printf("\n");
-	printf("printf:\t\t.%.*s.\n", -3, "hello");
-	ft_printf("ft_printf:\t.%.*s.\n", -3, "hello");
+	printf("15printf:\t.%.*s.\n", -3, "hello");
+	ft_printf("15ft_printf:\t.%.*s.\n", -3, "hello");
 	printf("\n");
-	printf("printf:\t\t.%*.*s.\n", -7, -3, "yolo");
-	ft_printf("ft_printf:\t.%*.*s.\n", -7, -3, "yolo");
+	printf("16printf:\t\t.%*.*s.\n", -7, -3, "yolo");
+	ft_printf("16ft_printf:\t.%*.*s.\n", -7, -3, "yolo");
 	printf("\n");
 }
 
@@ -110,7 +110,6 @@ void	test_p(void)
 {
 	char	*p = "palavra";
 
-//	printf("%s", ft_itoa_base_u(4294978743, BASE_HEX));
 	printf("0printf:\t.%p.\n", p);
 	ft_printf("0ft_printf:\t.%p.\n", p);
 	printf("\n");
@@ -162,6 +161,9 @@ void	test_pct(void)
 	printf("\n");
 	printf("8printf:\t.%6.7%.\n");
 	ft_printf("8ft_printf:\t.%6.7%.\n");
+	printf("\n");
+	printf("9printf:\t.%.\n");
+	ft_printf("9ft_printf:\t.%.\n");
 	printf("\n");
 }
 
@@ -223,17 +225,17 @@ void	test_d(void)
 	printf("19printf:\t.%0082.d.\n", 54);
 	ft_printf("19ft_printf:\t.%0082.d.\n", 54);
 	printf("\n");
-	printf("19printf:\t.%082.d.\n", 54);
-	ft_printf("19ft_printf:\t.%082.d.\n", 54);
+	printf("20printf:\t.%082.d.\n", 54);
+	ft_printf("20ft_printf:\t.%082.d.\n", 54);
 	printf("\n");
-	printf("19printf:\t.%00082.d.\n", 54);
-	ft_printf("19ft_printf:\t.%00082.d.\n", 54);
+	printf("21printf:\t.%00082.d.\n", 54);
+	ft_printf("21ft_printf:\t.%00082.d.\n", 54);
 	printf("\n");
-	printf("19printf:\t.%-82.d.\n", 54);
-	ft_printf("19ft_printf:\t.%-82.d.\n", 54);
+	printf("22printf:\t.%-82.d.\n", 54);
+	ft_printf("22ft_printf:\t.%-82.d.\n", 54);
 	printf("\n");
-	printf("19printf:\t.%--82.d.\n", 54);
-	ft_printf("19ft_printf:\t.%--82.d.\n", 54);
+	printf("23printf:\t.%--82.d.\n", 54);
+	ft_printf("23ft_printf:\t.%--82.d.\n", 54);
 	printf("\n");
 }
 
@@ -290,6 +292,12 @@ void	test_x(void)
 
 void	test_u(void)
 {
+	printf("1printf:\t.%u.\n", 42);
+	ft_printf("1ft_printf:\t.%u.\n", 42);
+	printf("\n");
+	printf("2printf:\t.%u.\n", -42);
+	ft_printf("2ft_printf:\t.%u.\n", -42);
+	printf("\n");
 	printf("3printf:\t.%05u.\n", 42);
 	ft_printf("3ft_printf:\t.%05u.\n", 42);
 	printf("\n");
@@ -337,49 +345,14 @@ void	test_u(void)
 	printf("\n");
 }
 
-void	test_int(void)
-{
-	int inteiro;
-//	int i = 42;
-
-//	printf("%d %0d %-d %.2d\n", i, i ,i, i);
-//	printf(". %-10d .\n", i);
-//    printf(". %00010d .\n", i);
-//    printf(". %- 10d .\n", i);
-//    printf(". % -10d .\n", i);
-	inteiro = 44;
-	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
-	inteiro = -44;
-	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
-	inteiro = 490904;
-	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
-	inteiro = -490904;
-	printf("%%d=%d, %%i=%i, %%o=%o, %%u=%u, %%x=%x, %%X=%X\n", inteiro, inteiro, inteiro, inteiro, inteiro, inteiro);
-}
-
-void	test_float(void)
-{
-	float decimal;
-
-	decimal = 44.65;
-	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%.f, %%.0f=%.0f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal, decimal);
-	decimal = -44.65;
-	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal);
-	decimal = 490904.656565;
-	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal);
-	decimal = -490904.656565;
-	printf("%%f=%f, %%F=%F, %%.1f=%.1f, %%.f=%f, %%e=%e, %%.2e=%.2e\n", decimal, decimal, decimal, decimal, decimal, decimal);
-}
-
 int	main(void)
 {
-//	test_c();
-//	test_s();
-//	test_p();
-//	test_pct();
-//	test_d();
-//	test_u();
-//	test_x();
-	ft_printf("%");
+	test_c();
+	test_s();
+	test_p();
+	test_pct();
+	test_d();
+	test_u();
+	test_x();
 	return (0);
 }

@@ -15,13 +15,15 @@ NAME		= a.out
 DEBG_DIR	= $(NAME).dSYM
 
 LIBFTPRINTF_DIR	= ..
+LIBFTPRINTF_IDIR = $(LIBFTPRINTF_DIR)/include
 LIBFTPRINTF	= $(LIBFTPRINTF_DIR)/libftprintf.a
 LIBFT_DIR	= ../libft
+LIBFT_IDIR	= $(LIBFT_DIR)/include
 
 CC		= gcc
 CC_FLAGS	= -g -Wall -Wextra  \
-		  -I$(LIBFT_DIR) \
-		  -I$(LIBFTPRINTF_DIR)/include \
+		  -I$(LIBFT_IDIR) \
+		  -I$(LIBFTPRINTF_IDIR) \
 		  -L$(LIBFT_DIR) \
 		  -L$(LIBFTPRINTF_DIR) \
 		  -lft \

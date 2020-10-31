@@ -1,8 +1,3 @@
 *.a
 obj/
-.vscode/*
-ft_printf.code-workspace
-test/pft_2019/
-test/42TESTERS-PRINTF/
-test/.42_Test_42_Logs_Here
-test/ft_printf_test/
+.DS_Store
