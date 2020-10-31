@@ -17,3 +17,5 @@ Flags mannaged: __-0.*#+[space]__
 * others
   * a basic schema with flags x conversions' behavior
 * Makefile
+
+![ft_printf_universe](../assets/ft_printf.png?raw=true)
