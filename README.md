@@ -6,6 +6,11 @@ Conversions mannaged: __cspdiuoxX%__
 
 Flags mannaged: __-0.*#+[space]__
 
+## Instalation
+```
+git clone --recursive https://github.com/glllcs/ft_printf.git
+```
+
 ## Contents
 
 * src: functions
